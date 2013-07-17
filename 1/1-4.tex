@@ -1,0 +1,54 @@
+\documentclass{article}
+\usepackage{ben}
+\begin{document}
+\begin{enumerate}
+\item[1.4.6.1]
+  \textit{Terminal objects are unique up to isomorphism}
+  \begin{proof}
+    Assume $t1$ and $t2$ are terminal objects in a category $\mathcal{C}$.
+    Since for every object $c\in\mathcal{C}$ there exists a unique arrow
+    from $c$ to each terminal object, there exist arrows $f:t1\rightarrow t2$
+    and $g:t2 \rightarrow t1$. Thus $g \circ f = id_{t1}$ and $f \circ g = id_{t2}$,
+    and $f$ and $g$ define our isomorphism.
+  \end{proof}
+
+\item[1.4.6.2]
+  \begin{description}
+  \item[Set $\times$ Set:]
+  \item[]
+    \textit{Initial Object:} $(\{\} \times \{\})$
+  \item[]
+    \textit{Terminal Objects:} $\{ (\{A\} \times \{B\} )\ |\ A,B \in \textbf{Set} \}$
+  \item[Set$^\rightarrow$:]
+  \item[]
+    \textit{Initial Objects:} ? % TODO
+  \item[]
+    \textit{Terminal Objects:} ? % TODO
+  \item[poset $\mathcal{P}$:]
+  \item[]
+    \textit{Initial Objects:} The min objects
+    $\{ p \ |\ \forall p^\prime\in \mathcal{P},\ p \le p^\prime \}$
+  \item[]
+    \textit{Terminal Objects:} The max objects 
+    $\{ p \ |\ \forall p^\prime\in \mathcal{P},\ p^\prime \le p \}$
+  \end{description}
+
+\item[1.4.6.3]
+  A simple functional language with types $\textsc{Unit}$ and $\textsc{Bool}$
+  and arrows 
+  $true: \textsc{Unit} \rightarrow \textsc{Bool}$ and
+  $false: \textsc{Unit} \rightarrow \textsc{Bool}$
+  can be formalized as a category with no initial objects.
+  Initial objects must have one unique arrow to every other object in the 
+  category, and neither $\textsc{Unit}$ nor $\textsc{Bool}$ satisfy
+  this criteria.
+
+  This category also has no terminal objects, for 
+  there are no arrows from $\textsc{Bool}$ to $\textsc{Unit}$
+  and two arrows from $\textsc{Unit}$ to $\textsc{Bool}$.
+  
+  The initial and terminal objects in a single-object category are the same. 
+  Likewise, the initial and terminal objects in any fully-connnected (clique) category 
+  are the same.
+\end{enumerate}
+\end{document}
