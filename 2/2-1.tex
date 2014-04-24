@@ -1,0 +1,33 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+
+\begin{document}
+\begin{enumerate}
+\item[2.1.4]
+  We want to show that the definitions \emph{maplist}:
+  \begin{align*}
+     \emph{maplist}(f)([]) &= []
+  \\ \emph{maplist}(f)([x]) &= [f x]
+  \\ \emph{maplist}(f)(L * L') &= \emph{maplist}(f)(L) * \emph{maplist}(f)(L')
+  \end{align*}
+  and \emph{maplist'}
+  \begin{align*}
+     \emph{maplist}(f)([]) &= []
+  \\ \emph{maplist}(f)([x] * L) &= [f x] * \emph{maplist}(f)(L)
+  \end{align*}
+  are equivalent.
+  This follows by the associativity of *.
+  The second definition forces right associativity and the first allows any parenthesization.
+
+\item[2.1.10.1]
+\begin{itemize}
+\item Example 2.1.5, the forgetful functor on monoids, satisfies the definition of a functor because it takes the identity homomorphism to the identity on the underlying set and the result of $F (f;g)$ for homomorphisms $f : (M,\cdot,e) \rightarrow (M',\cdot',e')$ and $g : (M',\cdot', e') \rightarrow (M'',\cdot'',e'')$ is $F(f); F(g)$ where $F(f) : M \rightarrow M'$ and $F(g) : M' \rightarrow M''$. 
+Thus identities and composition are preserved.
+\item Example 2.1.6, the identity functor, trivially preserves identities and composition.
+\item Example 2.1.7, the right product functor, takes the identity arrow for an object $B$ to the product $(id_B, id_A)$, which is the identity arrow for the resulting pair, and maps compositions to the composition of product arrows $(f,id_A); (g,id_A)$.
+\end{itemize}
+
+\item[2.1.10.3] The functors between monoids considered as one-object categories are the monoid homomorphisms.
+\end{enumerate}
+\end{document}
