@@ -1,0 +1,61 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{mamsthm}
+\usepackage{palatino}
+\usepackage{tikz}
+
+\begin{document}
+\begin{enumerate}
+\item[1.3.1]
+  To show that the epimorphisms in \textbf{Set} are the surjective functions, let $f : A \rightarrow B$ be a surjective function and let $g : B \rightarrow C$ and $h : B \rightarrow C$ be other arrows in \textbf{Set}.
+  First, assume both that $g$ and $h$ are equal and that $g \circ f \ne h \circ f$ to derive a contradiction.
+  Let $x$ be an element of $A$ such that $g(f(x)) \ne h(f(x))$.
+  If $f(x) = y$ we have that $g(y) \ne h(y)$, but this contradicts the assumption that $g$ and $h$ are equal.
+
+  To show the converse, assume that $g \circ f = h \circ f$ but that $g \ne h$.
+  The first equality states that $\forall x\in A~.~g(f(x)) = h(f(x)) \rightarrow g(y) = h(y)$ if $y = f(x)$.
+  Because $f$ is surjective, this derivation shows that $g$ and $h$ agree on all elements of their common domain, thus contradicting the assumption that $g \ne h$.
+
+\item [1.3.2]
+  To show that the composition of two monic arrows is monic, let $f : B \rightarrow C$ and $g : C \rightarrow D$ be monic arrows.
+  First, let $a : A \rightarrow B$ and $b : A \rightarrow B$ be two equal arrows.
+  We derive $(g \circ f) \circ a = (g \circ f) \circ b$ by assuming there is some element $x \in A$ for which the equality does not hold.
+
+  By the equality of $a$ and $b$, we know that $(g\circ f)(a(x)) \ne (g\circ f)(b(x)) \Righarrow (g\circ f)(y) \ne (g\circ f)(y)$ for a $y = a(x) = b(x)$.
+  This implies $g(f(y)) \ne g(f(y))$, a contradiction.
+
+  Next, assume that $(g\circ f) \circ a = (g\circ f) \circ b$ but that $a \ne b$.
+  Then we have some element $x \in A$ such that $a(x) = y_1 \ne y_2 = b(x)$.
+  This implies that $g(f(y_1)) = g(f(y_2))$.
+  However, $g$ is a monomorphism and $f$ is equal to itself, so we arrive at a contradiction.
+
+
+  %% To show that if $g \circ f$ is monic then $f$ is monic, assume the opposite.
+  
+
+\item[]
+\item[1.3.4]
+  To show that the inverse $f^{-1} : B \rightarrow A$ of an isomorphism $f : A\rightarrow B$ is unique, assume the existence of a function $f^{-1}_2 : B \rightarrow A$ such that $f^{-1} \circ f = id_A = f^{-1}_2 \circ f$ and $f^{-1} \ne f^{-1}_2$.
+  Let $y$ be an element of $B$ such that $f^{-1}(b) \ne f^{-1}_2(b)$, and let $x$ be the preimage of $b$ in $f$.
+  Then we have $f^{-1}(f(x)) \ne f^{-1}_2(f(x)) \Rightarrow f^{-1}(y) \ne f^{-1}_2(y) \rightarrow x_1 \ne x_2$ for unequal elements $x_1,x_2 \in A$.
+  However, if $x_1 \ne x_2$ then either (or both) of $x_1$ and $x_2$ cannot equal $x$.
+  If $x_i = x$ does not hold, then the ``inverse'' function was incorrect; an isomorphism preserves identity.
+
+\item[]
+\item[1.3.5]
+
+\item[]
+\item[1.3.6] The category $\textbf{2}$ has an arrow, $f$, that is both a monomorphism and an epimorphism but not an isomorphism. 
+  \begin{center}
+  \begin{tikzpicture}[node distance=2cm, auto]
+  \node (A) {$A$};
+  \node (B) [right of=A] {$B$};
+  \draw[->] (A) to node {$f$} (B);
+  \end{tikzpicture}
+  \end{center}
+  This holds because of the limited number of compositions we can make. 
+  Ignoring composition of identities, there are only two possibilities: $id_A;\ f$ and $f;\ id_B$. 
+  Yet there is no arrow $f^{-1}: B \rightarrow A$, so $f$ is not an isomorphism.
+\end{enumerate}
+\end{document}
