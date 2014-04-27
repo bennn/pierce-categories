@@ -1,7 +1,6 @@
 \documentclass{article}
 
 \usepackage{amsmath}
-\usepackage{mamsthm}
 \usepackage{palatino}
 \usepackage{tikz}
 
@@ -22,7 +21,7 @@
   First, let $a : A \rightarrow B$ and $b : A \rightarrow B$ be two equal arrows.
   We derive $(g \circ f) \circ a = (g \circ f) \circ b$ by assuming there is some element $x \in A$ for which the equality does not hold.
 
-  By the equality of $a$ and $b$, we know that $(g\circ f)(a(x)) \ne (g\circ f)(b(x)) \Righarrow (g\circ f)(y) \ne (g\circ f)(y)$ for a $y = a(x) = b(x)$.
+  By the equality of $a$ and $b$, we know that $(g\circ f)(a(x)) \ne (g\circ f)(b(x)) \Rightarrow (g\circ f)(y) \ne (g\circ f)(y)$ for a $y = a(x) = b(x)$.
   This implies $g(f(y)) \ne g(f(y))$, a contradiction.
 
   Next, assume that $(g\circ f) \circ a = (g\circ f) \circ b$ but that $a \ne b$.
@@ -44,6 +43,56 @@
 
 \item[]
 \item[1.3.5]
+  We show that if $f : A \rightarrow B$ and $g : B \rightarrow C$ are isomorphisms then $g \circ f$ is an isomorphism with $f^{-1} \circ g^{-1}$ as its inverse.
+
+  First, define objects $A$, $B$, and $C$.
+  \begin{center}
+    \begin{tikzpicture}
+      \node (1) {$A$};
+      \node[right of=1,xshift=1cm] (2) {$B$};
+      \node[right of=2,xshift=1cm] (3) {$C$};
+    \end{tikzpicture}
+  \end{center}
+
+  By definition, we have arrows $f : A \rightarrow B$ and $f^{-1} : B \rightarrow A$ such that $f^{-1} \circ f = id_A$.
+  \begin{center}
+    \begin{tikzpicture}
+      \node (1) {$A$};
+      \node[right of=1,xshift=1cm] (2) {$B$};
+      \node[right of=2,xshift=1cm] (3) {$C$};
+
+      \draw[->] (1) edge[bend left] node[above] {$f$} (2);
+      \draw[->] (2) edge[bend left] node[below] {$f^{-1}$} (1);
+    \end{tikzpicture}
+  \end{center}
+
+  Likewise, we have $g : B \rightarrow C$ and $g^{-1} : C \rightarrow B$ such that $g^{-1} \circ g = id_B$.
+  \begin{center}
+    \begin{tikzpicture}
+      \node (1) {$A$};
+      \node[right of=1,xshift=1cm] (2) {$B$};
+      \node[right of=2,xshift=1cm] (3) {$C$};
+
+      \draw[->] (2) edge[bend left] node[above] {$g$} (3);
+      \draw[->] (3) edge[bend left] node[below] {$g^{-1}$} (2);
+    \end{tikzpicture}
+  \end{center}
+
+  Together, these arrows yield the diagram:
+  \begin{center}
+    \begin{tikzpicture}
+      \node (1) {$A$};
+      \node[right of=1,xshift=1cm] (2) {$B$};
+      \node[right of=2,xshift=1cm] (3) {$C$};
+
+      \draw[->] (1) edge[bend left] node[above] {$f$} (2);
+      \draw[->] (2) edge[bend left] node[below] {$f^{-1}$} (1);
+      \draw[->] (2) edge[bend left] node[above] {$g$} (3);
+      \draw[->] (3) edge[bend left] node[below] {$g^{-1}$} (2);
+    \end{tikzpicture}
+  \end{center}
+
+  From which it is clear that $(f^{-1} \circ g^{-1}) \circ (g \circ f) = id_A$.
 
 \item[]
 \item[1.3.6] The category $\textbf{2}$ has an arrow, $f$, that is both a monomorphism and an epimorphism but not an isomorphism. 
