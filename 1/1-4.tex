@@ -1,29 +1,45 @@
 \documentclass{article}
-\usepackage{ben}
+
+\usepackage{palatino}
+\usepackage{amsmath}
+\usepackage{amsthm}
+
 \begin{document}
 \begin{enumerate}
 \item[1.4.6.1]
   \textit{Terminal objects are unique up to isomorphism}
   \begin{proof}
     Assume $t1$ and $t2$ are terminal objects in a category $\mathcal{C}$.
-    Since for every object $c\in\mathcal{C}$ there exists a unique arrow
-    from $c$ to each terminal object, there exist arrows $f:t1\rightarrow t2$
-    and $g:t2 \rightarrow t1$. Thus $g \circ f = id_{t1}$ and $f \circ g = id_{t2}$,
-    and $f$ and $g$ define our isomorphism.
+    Since for every object $c\in\mathcal{C}$ there exists a unique arrow from $c$ to each terminal object, there exist arrows $f:t1\rightarrow t2$ and $g:t2 \rightarrow t1$.
+    Thus $g \circ f = id_{t1}$ and $f \circ g = id_{t2}$, and $f$ and $g$ define our isomorphism.
   \end{proof}
+
+  A nearly-identical argument proves initial objects are unique up to isomorphism.
+  Just flip the arrows.
 
 \item[1.4.6.2]
   \begin{description}
   \item[Set $\times$ Set:]
   \item[]
     \textit{Initial Object:} $(\{\} \times \{\})$
-  \item[]
+
     \textit{Terminal Objects:} $\{ (\{A\} \times \{B\} )\ |\ A,B \in \textbf{Set} \}$
+    The arrows in \textbf{Set $\times$ Set} are pairs of \textbf{Set} arrows.
+    So the arrows leaving the initial object for other objects in the category are the pairs of arrows leaving the initial object in \textbf{Set}.
+    Similarly for the terminal objects.
+
+  \item[]
   \item[Set$^\rightarrow$:]
   \item[]
-    \textit{Initial Objects:} ? % TODO
+    \textit{Initial Object:} $\{ f~|~f : \{\} \rightarrow \{\} \}$
+
+    There is exactly one way to map the empty set to any other domain or range.
   \item[]
-    \textit{Terminal Objects:} ? % TODO
+    \textit{Terminal Objects:} $\{ f~|~f : \{A\} \rightarrow \{B\},~ A,B \in \textbf{Set}\}$
+
+    Any domain maps uniquely to a singleton domain.
+    Likewise for ranges.
+
   \item[poset $\mathcal{P}$:]
   \item[]
     \textit{Initial Objects:} The min objects
@@ -34,6 +50,12 @@
   \end{description}
 
 \item[1.4.6.3]
+  
+  The initial and terminal objects in a single-object category (with only the identity arrow) are the same.
+
+  Any discrete category with more than one element has no initial or terminal objects.
+  More generally, any category with disconnected components has no initial or terminal objects.
+
   A simple functional language with types $\textsc{Unit}$ and $\textsc{Bool}$
   and arrows 
   $true: \textsc{Unit} \rightarrow \textsc{Bool}$ and
@@ -47,8 +69,5 @@
   there are no arrows from $\textsc{Bool}$ to $\textsc{Unit}$
   and two arrows from $\textsc{Unit}$ to $\textsc{Bool}$.
   
-  The initial and terminal objects in a single-object category are the same. 
-  Likewise, the initial and terminal objects in any fully-connnected (clique) category 
-  are the same.
 \end{enumerate}
 \end{document}
