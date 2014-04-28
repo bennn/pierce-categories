@@ -7,6 +7,56 @@
 \begin{document}
 \begin{enumerate}
 \item [1.5.2]
+  We have an object $X$ with projection arrows $\pi_1 : X \rightarrow A$ and $\pi_2 : X \rightarrow B$ and know that ``$X$ is a product of $A$ \& $B$''.
+  The goal is to show that $X$ is isomorphic to $A \times B$.
+  
+  By the informal declaration, we know that for every object $C$ with arrows $f : C \rightarrow A$ and $g : C \rightarrow B$, we have an arrow $\langle f , g \rangle : C \rightarrow X$.
+  Likewise for $A \times B$, there exists an induced arrow $\langle f' , g' \rangle : C' \rightarrow A \times B$.
+  \hfill{}
+  \begin{tikzpicture}
+    \node (1) {$C$};
+    \node[below of=1,yshift=-1cm] (2) {$X$};
+    \node[left of=2,xshift=-1cm] (3) {$A$};
+    \node[right of=2,xshift=1cm] (4) {$B$};
+
+    \draw[dashed,->] (1) -- node[below] {$\langle f , g \rangle$} (2);
+    \draw[->] (1) -- node[left] {$f$} (3);
+    \draw[->] (1) -- node[right] {$g$} (4);
+    \draw[->] (2) -- node[above] {$\pi_1$} (3);
+    \draw[->] (2) -- node[above] {$\pi_2$} (4);
+  \end{tikzpicture}
+  \hfill{}
+  \begin{tikzpicture}
+    \node (1) {$C'$};
+    \node[below of=1,yshift=-1cm] (2) {$A \times B$};
+    \node[left of=2,xshift=-1cm] (3) {$A$};
+    \node[right of=2,xshift=1cm] (4) {$B$};
+
+    \draw[dashed,->] (1) -- node[below] {$\langle f' , g' \rangle$} (2);
+    \draw[->] (1) -- node[left] {$f'$} (3);
+    \draw[->] (1) -- node[right] {$g'$} (4);
+    \draw[->] (2) -- node[above] {$\pi'_1$} (3);
+    \draw[->] (2) -- node[above] {$\pi'_2$} (4);
+  \end{tikzpicture}
+  \hfill{}
+
+  Taking $f = \pi_1'$, $g = \pi_2'$, $f' = \pi_1$, and $g' = \pi_2$, we have an isomorphism between $X$ and $A \times B$ from the arrows $\langle f , g \rangle$ and $\langle f' , g' \rangle$.
+  \begin{center}
+    \begin{tikzpicture}
+      \node (0) {};
+      \node[left of=0,xshift=-1cm] (1) {$X$};
+      \node[right of=0,xshift=1cm] (2) {$A \times B$};
+      \node[above of=0,yshift=1cm] (3) {$A$};
+      \node[below of=0,yshift=-1cm] (4) {$B$};
+
+      \draw[transform canvas={yshift=0.3ex},dashed,->] (1) -- node[above] {$\langle \pi_1 , \pi_2 \rangle$} (2);
+      \draw[transform canvas={yshift=-0.5ex},dashed,->] (2) -- node[below] {$\langle \pi'_1, \pi'_2 \rangle$} (1);
+      \draw[->] (1) -- node[left] {$\pi_1$} (3);
+      \draw[->] (1) -- node[right] {$\pi_2$} (4);
+      \draw[->] (2) -- node[above] {$\pi'_1$} (3);
+      \draw[->] (2) -- node[above] {$\pi'_2$} (4);
+    \end{tikzpicture}
+  \end{center}
   
   
 \item [1.5.6.1]
@@ -15,9 +65,9 @@
   \begin{center}
     \begin{tikzpicture}
       \node (1) {$C$};
-      \node[below of=1,yshift=-2cm] (2) {$A \times B$};
-      \node[left of=2,xshift=-2cm] (3) {$A$};
-      \node[right of=2,xshift=2cm] (4) {$B$};
+      \node[below of=1,yshift=-1cm] (2) {$A \times B$};
+      \node[left of=2,xshift=-1cm] (3) {$A$};
+      \node[right of=2,xshift=1cm] (4) {$B$};
 
       \draw[dashed,->] (1) -- node[left] {$\langle f , g \rangle$} (2);
       \draw[->] (1) -- node[left] {$f$} (3);
@@ -32,11 +82,11 @@
     \begin{tikzpicture}
       \node (1) {$C$};
       \node[below of=1,yshift=-1cm] (2) {$A \times B$};
-      \node[left of=2,xshift=-2cm] (3) {$A$};
-      \node[right of=2,xshift=2cm] (4) {$B$};
+      \node[left of=2,xshift=-1cm] (3) {$A$};
+      \node[right of=2,xshift=1cm] (4) {$B$};
       \node[above of=1,yshift=0.5cm] (5) {$D$};
 
-      \draw[dashed,->] (1) -- node[left] {$\langle f , g \rangle$} (2);
+      \draw[dashed,->] (1) -- node[below] {$\langle f , g \rangle$} (2);
       \draw[->] (1) -- node[left] {$f$} (3);
       \draw[->] (1) -- node[right] {$g$} (4);
       \draw[->] (2) -- node[above] {$\pi_1$} (3);
@@ -50,11 +100,11 @@
     \begin{tikzpicture}
       \node (1) {$C$};
       \node[below of=1,yshift=-1cm] (2) {$A \times B$};
-      \node[left of=2,xshift=-2cm] (3) {$A$};
-      \node[right of=2,xshift=2cm] (4) {$B$};
+      \node[left of=2,xshift=-1cm] (3) {$A$};
+      \node[right of=2,xshift=1cm] (4) {$B$};
       \node[above of=1,yshift=0.5cm] (5) {$D$};
 
-      \draw[dashed,->] (1) -- node[left] {$\langle f , g \rangle$} (2);
+      \draw[dashed,->] (1) -- node[below] {$\langle f , g \rangle$} (2);
       \draw[->] (1) -- node[left] {$f$} (3);
       \draw[->] (1) -- node[right] {$g$} (4);
       \draw[->] (2) -- node[above] {$\pi_1$} (3);
@@ -70,8 +120,8 @@
     \begin{tikzpicture}
       \node (1) {};
       \node[below of=1,yshift=-1cm] (2) {$A \times B$};
-      \node[left of=2,xshift=-2cm] (3) {$A$};
-      \node[right of=2,xshift=2cm] (4) {$B$};
+      \node[left of=2,xshift=-1cm] (3) {$A$};
+      \node[right of=2,xshift=1cm] (4) {$B$};
       \node[above of=1,yshift=0.5cm] (5) {$D$};
 
       %% \draw[dashed,->] (1) -- node[left] {$\langle f , g \rangle$} (2);
