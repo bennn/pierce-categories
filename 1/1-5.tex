@@ -58,7 +58,27 @@
     \end{tikzpicture}
   \end{center}
   
-  
+  %% TODO
+  For the second half of the problem, we want to show that an object $C$ isomorphic to a product object $A \times B$ is a product of $A$ and $B$.
+  The isomorphism and definition of $A \times B$ give us the diagram:
+  \begin{center}
+    \begin{tikzpicture}
+      \node (1) {$C$};
+      \node[below of=1,yshift=-1cm] (2) {$A \times B$};
+      \node[left of=2,xshift=-1cm] (3) {$A$};
+      \node[right of=2,xshift=1cm] (4) {$B$};
+
+      \draw[transform canvas={xshift=-0.5ex},->] (1) -- node[left] {$\langle f , g \rangle$} (2);
+      \draw[transform canvas={xshift=0.3ex},->] (2) -- node[right] {$h$} (1);
+      \draw[->] (1) -- node[left] {$f$} (3);
+      \draw[->] (1) -- node[right] {$g$} (4);
+      \draw[->] (2) -- node[above] {$\pi_1$} (3);
+      \draw[->] (2) -- node[above] {$\pi_2$} (4);
+    \end{tikzpicture}
+  \end{center}
+
+  From which it is clear that $h$ is $\langle \pi_1 , \pi_2 \rangle$ and $f$ and $g$ are the projections from $C$.
+
 \item [1.5.6.1]
   We want to show that $\langle f \circ h, g \circ h\rangle = \langle f, g \rangle \circ h$.
   The arrow $\langle f , g \rangle$ implies the existence of a product object:
