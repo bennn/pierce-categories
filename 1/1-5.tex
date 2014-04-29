@@ -155,8 +155,61 @@
     \end{tikzpicture}
   \end{center}
 
+\item[]
 \item [1.5.6.2]
+  Definition 1.5.3 states that a product map $(f \times h)$ is the arrow $\langle f \circ \pi_1 , h \circ \pi_2 \rangle$.
+  Because the mediating arrow $\langle g , k \rangle$ defines the left and right elements of a product (aka the inputs for $f$ and $h$, respectively), we may compose and skip the projection arrows to obtain $\langle f \circ g , h \circ k \rangle$.
+
+\item[]
 \item [1.5.6.3]
+  We want to show that $(f \times h) \circ (g \times k) = (f \circ g) \times (h \circ k)$.
+  The terms on either side of the equality yield the following diagrams:
+
+  \hfill{}
+  \begin{tikzpicture}
+    \node (1) {$A \times B$};
+    \node[below of=1,yshift=-0.5cm] (2) {$C \times D$};
+    \node[left of=2,xshift=-0.5cm] (3) {$C$};
+    \node[right of=2,xshift=0.5cm] (4) {$D$};
+    \node[below of=2,yshift=-0.5cm] (5) {$E \times F$};
+    \node[left of=5,xshift=-0.5cm] (6) {$E$};
+    \node[right of=5,xshift=0.5cm] (7) {$F$};
+
+    %% unique
+    \draw[dashed,->] (1) -- (2);
+    \draw[dashed,->] (2) -- (5);
+    %% projections
+    \draw[->] (2) -- (3);%%node[above] {$\pi_1$} (3);
+    \draw[->] (2) -- (4);%%node[above] {$\pi_2$} (4);
+    \draw[->] (5) -- (6);%%node[above] {$\pi_1$} (6);
+    \draw[->] (5) -- (7);%%node[above] {$\pi_2$} (7);
+    %% diags
+    \draw[->] (1) -- node[above,xshift=-0.5cm] {$g \circ \pi_1$} (3);
+    \draw[->] (1) -- node[above,xshift=0.5cm] {$k \circ \pi_2$} (4);
+    \draw[->] (2) -- node[above,xshift=-0.5cm] {$f \circ \pi_1$} (6);
+    \draw[->] (2) -- node[above,xshift=0.5cm] {$h \circ \pi_2$} (7);
+  \end{tikzpicture}
+  \hfill{}
+  \begin{tikzpicture}
+    \node (1) {$A \times B$};
+    \node[below of=1,yshift=-2cm] (2) {$E \times F$};
+    \node[left of=2,xshift=-0.5cm] (3) {$E$};
+    \node[right of=2,xshift=0.5cm] (4) {$F$};
+
+    %% unique
+    \draw[dashed,->] (1) -- (2);%%node[below,yshift=-0.3cm] {$(f \circ g) \times (h \circ k)$} (2);
+    %% projections
+    \draw[->] (2) -- node[above] {$\pi_1$} (3);
+    \draw[->] (2) -- node[above] {$\pi_2$} (4);
+    %% diags
+    \draw[->] (1) -- node[above,yshift=0.5cm,xshift=-0.5cm] {$f \circ g \circ \pi_1$} (3);
+    \draw[->] (1) -- node[above,yshift=0.5cm,xshift=0.5cm] {$h \circ k \circ \pi_2$} (4);
+  \end{tikzpicture}
+  \hfill{}
+
+  Our result follows by the uniqueness of the dashed arrows.
+
+\item[]
 \item [1.5.6.4]
   If $X$ and $Y$ are objects in a poset $P$ considered as a category, a product of $X$ and $Y$ is an object $Z$ such that:
   \begin{itemize}
@@ -168,6 +221,7 @@
 
   In other words, the product of $X$ and $Y$ is $X$ is $X \le Y$ holds and $Y$ otherwise.
 
+\item[]
 \item [1.5.6.5]
   If $X$ and $Y$ are objects in a poset $P$ considered as a category, a coproduct of $X$ and $Y$ has the properties:
   \begin{itemize}
@@ -179,13 +233,16 @@
   The coproduct of $X$ and $Y$ is the greater of $X$ and $Y$.
   That is, $Y$ if $X \le Y$ and $X$ otherwise.
 
+\item[]
 \item [1.5.6.6]
   The category poset has pairs of objects that lack a product (unless the poset is linear and finite).
 
   The discrete category has no products, nor does the category \textbf{1}.
 
+\item[]
 \item [1.5.6.7]
-  
+  The definition 1.5.5 of a product of a family $(A_i)_{i\in I}$ of objects simplifies to a discrete object $\prod_\emptyset$ whose only arrow is the identity.
+  With no elements to project onto, there are no other exiting arrows or induced arrows.
 
 \end{enumerate}
 \end{document}
