@@ -78,7 +78,7 @@
   \end{center}
 
   From which it is clear that $h$ is $\langle \pi_1 , \pi_2 \rangle$ and $f$ and $g$ are the projections from $C$.
-
+\newpage
 \item [1.5.6.1]
   We want to show that $\langle f \circ h, g \circ h\rangle = \langle f, g \rangle \circ h$.
   The arrow $\langle f , g \rangle$ implies the existence of a product object:
@@ -135,11 +135,11 @@
     \end{tikzpicture}
   \end{center}
 
-  In turn, this satisfies the product construction:
+  In turn, this satisfies the product construction, thus the arrows $\langle f \circ h, g \circ h \rangle$ and $\langle f , g \rangle \circ h$ are equal.
   \begin{center}
     \begin{tikzpicture}
       \node (1) {};
-      \node[below of=1,yshift=-1cm] (2) {$A \times B$};
+      \node[below of=1,yshift=-0.0cm] (2) {$A \times B$};
       \node[left of=2,xshift=-1cm] (3) {$A$};
       \node[right of=2,xshift=1cm] (4) {$B$};
       \node[above of=1,yshift=0.5cm] (5) {$D$};
@@ -155,13 +155,37 @@
     \end{tikzpicture}
   \end{center}
 
-  Thus the arrows $\langle f \circ h, g \circ h \rangle$ and $\langle f , g \rangle \circ h$ are equal.
-
 \item [1.5.6.2]
 \item [1.5.6.3]
 \item [1.5.6.4]
+  If $X$ and $Y$ are objects in a poset $P$ considered as a category, a product of $X$ and $Y$ is an object $Z$ such that:
+  \begin{itemize}
+  \item There exist arrows $\pi_1 : Z \rightarrow X$ and $\pi_2 : Z \rightarrow Y$.
+  \item For every other object $C$ with arrows $f : C \rightarrow X$ and $g : C \rightarrow Y$, there is the unique arrow $\langle f , g \rangle : C \rightarrow X \times Y$.
+  \end{itemize}
+  In a poset considered as a category, this means that $X \times Y \le X$ and $X \times Y \le Y$.
+  Additionally, we have that for all objects $C$ satisfying $C \le X \wedge C \le Y$ we have that $C \le X \times Y$.
+
+  Product objects in a poset are elements less than at least two other elements of the poset.
+
 \item [1.5.6.5]
+  If $X$ and $Y$ are objects in a poset $P$ considered as a category, a coproduct of $X$ and $Y$ has the properties:
+  \begin{itemize}
+  \item $X \le X + Y$
+  \item $Y \le X + Y$
+  \item For every $Z$ such that $X \le Z$ and $Y \le Z$, we have $X + Y \le Z$.
+  \end{itemize}
+
+  Coproduct objects in a poset are elements that are greater than at least two other elements of the poset.
+
 \item [1.5.6.6]
+  The category poset has pairs of objects that lack a product.
+  The minimal element is a member of no products.
+
+  The discrete category has no products, nor does the category \textbf{1}.
+  
 \item [1.5.6.7]
+  
+
 \end{enumerate}
 \end{document}
