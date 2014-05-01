@@ -1,5 +1,9 @@
 \documentclass{article}
-\usepackage{ben}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+
 \begin{document}
 \begin{enumerate}
 \item[1.7.2]
@@ -15,7 +19,44 @@
 
 \item[]
 \item[1.7.4.1]
-  
+  First, we observe that a identity arrows are equalizers in a poset considered as a category because the dashed arrow $k = id_A$ is unique.
+  \begin{center}
+    \begin{tikzpicture}
+      \node (1) {$A$};
+      \node[right of=1,xshift=0.5cm] (2) {$A$};
+      \node[right of=2,xshift=0.5cm] (3) {$B$};
+      \node[below of=1,yshift=-0.5cm] (4) {$A$};
+
+      \draw[transform canvas={yshift=0.1cm},->] (2) -- node[above] {$f$} (3);
+      \draw[transform canvas={yshift=-0.1cm},->] (2) -- node[below] {$g$} (3);
+      \draw[->] (1) -- node[above] {$id_A$} (2);
+      \draw[dashed,->] (4) -- node[left] {$id_A$} (1);
+      \draw[->] (4) -- node[below right] {$id_A$} (2);
+    \end{tikzpicture}
+  \end{center}
+
+  To prove that identity arrows are the only equalizers, assume have non-identity equalizer $e : A \rightarrow B$ for two functions $f,g : B \rightarrow C$.
+  We know that $id_B$ is another equalizer of $f$ and $g$, so we must prove that there is a unique arrow $k : B \rightarrow A$ such that $e \circ k = id_B$.
+  \begin{center}
+    \begin{tikzpicture}
+      \node (1) {$A$};
+      \node[right of=1,xshift=0.5cm] (2) {$B$};
+      \node[right of=2,xshift=0.5cm] (3) {$C$};
+      \node[below of=1,yshift=-0.5cm] (4) {$B$};
+
+      \draw[transform canvas={yshift=0.1cm},->] (2) -- node[above] {$f$} (3);
+      \draw[transform canvas={yshift=-0.1cm},->] (2) -- node[below] {$g$} (3);
+      \draw[->] (1) -- node[above] {$e$} (2);
+      \draw[red,dashed,->] (4) -- node[left] {$k$} (1);
+      \draw[->] (4) -- node[below right] {$id_B$} (2);
+    \end{tikzpicture}
+  \end{center}
+
+  However, there is no such arrow.
+  All arrows from an object $A$ to an object $B$ in a poset considered as a category have the property that $A \le B$ in the original poset.
+  Hence if $e : A \rightarrow B$ exists then $k : B \rightarrow A$ cannot exist unless $A$ and $B$ are the same object.
+  This is impossible unless $e$ is an identity arrow.
+  Therefore the only equalizers in a poset considered as a category \emph{are} identity arrows.
 
 \item[]
 \item[1.7.4.2]
