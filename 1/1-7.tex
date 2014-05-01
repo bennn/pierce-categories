@@ -60,8 +60,8 @@
 
 \item[]
 \item[1.7.4.2]
-  Every equalizer $e : B \rightarrow C$ of arrows from $C$ to $D$ is monic because if we have arrows $k : A \rightarrow B$ and $k' : A \rightarrow B$ such that $e \circ k = e \circ k'$ then we are guaranteed that $k = k'$ because there is exactly one unique arrow $k$.
-  (To compare to Pierce's definition, the arrow $e'$ in the equalizer diagram would be relabeled $e \circ k$.)
+  Every equalizer $e : B \rightarrow C$ is monic because if we have arrows $k : A \rightarrow B$ and $k' : A \rightarrow B$ such that $e \circ k = e \circ k'$ then we are guaranteed that $k = k'$ because there is exactly one unique arrow from the object $A$ to the domain of the equalizer $e$.
+  This follows because the arrows $k \circ e$ and $k' \circ e$ must also be equalizers (and any other equalizer must have a unique arrow to $e$).
   
 \item[]
 \item[1.7.4.3]
