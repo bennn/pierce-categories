@@ -65,6 +65,44 @@
   
 \item[]
 \item[1.7.4.3]
+  Let $e : X \rightarrow A$ be an epic equalizer of $f : A \rightarrow B$ and $g : A \rightarrow B$.
+  An epic equalizer has the property that $f \circ e = g \circ e$, the normal equalizer condition, now implies that $f = g$.
+  This is stronger than normal\textemdash instead of restricting the domains of $f$ and $g$ to a subset on which they're equal (nevermind if they disagree on certain inputs), we know that the codomain of $e$ is the entire domain of $f$ and $g$.
+  That is, $e$ is surjective.
+  It follows that every other equalizer $e'$ such that $f \circ e' = g \circ e'$ is also epic.
   
+  To construct an isomorphism from $X$ to $A$, consider the equalizer $id_A$ as shown in the following diagram:
+  \begin{center}
+    \begin{tikzpicture}
+      \node (1) {$X$};
+      \node[right of=1,xshift=0.5cm] (2) {$A$};
+      \node[right of=2,xshift=0.5cm] (3) {$B$};
+      \node[below of=1,yshift=-0.5cm] (4) {$A$};
+
+      \draw[transform canvas={yshift=0.1cm},->] (2) -- node[above] {$f$} (3);
+      \draw[transform canvas={yshift=-0.1cm},->] (2) -- node[below] {$g$} (3);
+      \draw[->] (1) -- node[above] {$e$} (2);
+      \draw[dashed,->] (4) -- node[left] {$k$} (1);
+      \draw[->] (4) -- node[below right] {$id_A$} (2);
+    \end{tikzpicture}
+  \end{center}
+  By definition, there is a unique arrow $k : A \rightarrow X$.
+  Furthermore, $e \circ k = id_A$.
+  
+  This gives us half of the isomorphism.
+  But since the identity arrow is it's own inverse, we may rewrite the triangle from the diagram to clearly show that $k \circ e = id_X$.
+  \begin{center}
+    \begin{tikzpicture}
+      \node (1) {$X$};
+      \node[right of=1,xshift=0.5cm] (2) {$A$};
+      \node[below of=1,yshift=-0.5cm] (4) {$A$};
+
+      \draw[->] (1) -- node[above] {$e$} (2);
+      \draw[dashed,->] (4) -- node[left] {$k$} (1);
+      \draw[->] (2) -- node[below right] {$id_A$} (4);
+    \end{tikzpicture}
+  \end{center}
+  The end.
+
 \end{enumerate}
 \end{document}
