@@ -98,12 +98,54 @@
 
   The case for $(f_1; f_3)$ is slightly more complicated and I haven't yet finished.
   
-
 \item []
 \item [1.8.7.2]
 \item []
 \item [1.8.7.3]
 \item []
 \item [1.8.7.4]
+  A pushout of arrows $f : A \rightarrow B$ and $g : A \rightarrow C$ is a pair of arrows $f' : C \rightarrow D$ and $g' : B \rightarrow D$ with a common codomain such that for any other pair of arrows from the domains of $f$ and $g$ to a common codomain $X$ there is a unique arrow $k : D \rightarrow X$ making the following diagram commute.
+  \begin{center}
+    \begin{tikzpicture}
+      \node (1) {$D$};
+      \node[right of=1,xshift=1cm] (2) {$C$};
+      \node[below of=1,yshift=-1cm] (4) {$B$};
+      \node[right of=4,xshift=1cm] (5) {$A$};
+
+      \draw[->] (5) -- node[right] {$g$} (2);
+      \draw[->] (5) -- node[below] {$f$} (4);
+
+      \draw[->] (2) -- node[above] {$f'$} (1);
+      \draw[->] (4) -- node[right] {$g'$} (1);
+      %% pullback stuff
+      \node[above left of=1,xshift=-1cm,yshift=1cm] (7) {$X$};
+      \draw[dashed,->] (1) -- node[right]{$k$} (7);
+      \draw[->] (2) -- node[above]{} (7);
+      \draw[->] (4) -- node[left]{} (7);
+    \end{tikzpicture}
+  \end{center}
+
+  This is just a pullback with all arrows reversed.
+  Also, in the same way Pierce showed products as pullbacks we can show coproducts as pushouts.
+  \begin{center}
+    \begin{tikzpicture}
+      \node (1) {$B+C$};
+      \node[right of=1,xshift=1cm] (2) {$C$};
+      \node[below of=1,yshift=-1cm] (4) {$B$};
+      \node[right of=4,xshift=1cm] (5) {$A$};
+
+      \draw[->] (5) -- node[right] {} (2);
+      \draw[->] (5) -- node[below] {} (4);
+
+      \draw[->] (2) -- node[above] {} (1);
+      \draw[->] (4) -- node[right] {} (1);
+      %% pullback stuff
+      \node[above left of=1,xshift=-1cm,yshift=1cm] (7) {$X$};
+      \draw[dashed,->] (1) -- node[right]{} (7);
+      \draw[->] (2) -- node[above]{} (7);
+      \draw[->] (4) -- node[left]{} (7);
+    \end{tikzpicture}
+  \end{center}
+
 \end{enumerate}
 \end{document}
