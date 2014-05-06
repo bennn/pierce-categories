@@ -93,11 +93,13 @@
     \end{tikzpicture}
   \end{center}
 
-  From the diagram, it is immediately clear that $g_1$ is the pullback arrow for $(f_2; f_4)$.
-  The codomain of $g_1$ is the same as the domain of $(f_2; f_4)$, hence for any arrow $j$ that we could replace $g_1$ with and still have a commutative diagram we can map its domain to $\textbf{dom}(g_1)$ using the unique arrow $k_1$.
+  From the diagram, it is immediately clear that $g_1$ is the pullback arrow of $g_3$ along $(f_2; f_4)$.
+  That side of the rectangle is the same as that side of the square.
+  More formally, the codomain of $g_1$ is the same as the domain of $(f_2; f_4)$, hence for any arrow $j$ that we could replace $g_1$ with and still have a commutative diagram we can map its domain to $\textbf{dom}(g_1)$ using the unique arrow $k_1$.
 
-  The case for $(f_1; f_3)$ is slightly more complicated and I haven't yet finished.
-  
+  The case for $(f_1; f_3)$ follows because $f_1$ and $f_3$ are the unique pullbacks of $f_2$ and $f_4$ (along $g_2$ and $g_4$), respectively.
+  If the arrows are unique then their composition is unique, thus $(f_1; f_3)$ must be the pullback of $(f_2; f_4)$ along $g_4$.
+
 \item []
 \item [1.8.7.2]
 \item []
