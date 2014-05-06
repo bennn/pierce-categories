@@ -7,7 +7,8 @@
 \begin{document}
 \begin{enumerate}
 \item [1.8.7.1]
-  The pullback lemma states that if both squares of the diagram below are pullbacks then the entire rectangle is a pullback (and vice-versa).
+  The pullback lemma states that if both squares of the diagram below are pullbacks then the entire rectangle is a pullback.
+  In the other direction, it states that if the overall rectangle and right square are pullbacks, the left rectangle is a pullback.
   \begin{center}
     \begin{tikzpicture}
       \node (1) {};
@@ -48,7 +49,8 @@
     \node[above left of=1,xshift=-1cm,yshift=1cm] (7) {};
     \draw[dashed,->] (7) -- node[above]{$k_1$} (1);
     \draw[->] (7) -- node[above]{$i_1$} (2);
-    \draw[->] (7) -- node[left]{$j_1$} (4);  \end{tikzpicture}
+    \draw[->] (7) -- node[left]{$j_1$} (4);  
+  \end{tikzpicture}
   \hfill{}
   \begin{tikzpicture}
     \node (1) {};
@@ -59,8 +61,8 @@
     \draw[->] (1) -- node[above]{$f_3$}(2);
     \draw[->] (4) -- node[below]{$f_4$}(5);
     %% Vertical arrows
-    \draw[->] (1) -- node[right]{$g_3$}(4);
-    \draw[->] (2) -- node[right]{$g_4$}(5);
+    \draw[->] (1) -- node[right]{$g_2$}(4);
+    \draw[->] (2) -- node[right]{$g_3$}(5);
     %% pullback stuff
     \node[above left of=1,xshift=-1cm,yshift=1cm] (7) {};
     \draw[dashed,->] (7) -- node[above]{$k_2$} (1);
@@ -84,7 +86,7 @@
       \draw[->] (4) -- node[below] {$f_2; f_4$} (6);
       %% Vertical arrows
       \draw[->] (1) -- node[right] {$g_1$} (4);
-      \draw[->] (3) -- node[right] {$g_4$} (6);
+      \draw[->] (3) -- node[right] {$g_3$} (6);
       %% pullback stuff
       \node[above left of=1,xshift=-1cm,yshift=1cm] (7) {};
       \draw[dashed,->] (7) -- node[above]{$k$} (1);
@@ -97,8 +99,79 @@
   That side of the rectangle is the same as that side of the square.
   More formally, the codomain of $g_1$ is the same as the domain of $(f_2; f_4)$, hence for any arrow $j$ that we could replace $g_1$ with and still have a commutative diagram we can map its domain to $\textbf{dom}(g_1)$ using the unique arrow $k_1$.
 
-  The case for $(f_1; f_3)$ follows because $f_1$ and $f_3$ are the unique pullbacks of $f_2$ and $f_4$ (along $g_2$ and $g_4$), respectively.
-  If the arrows are unique then their composition is unique, thus $(f_1; f_3)$ must be the pullback of $(f_2; f_4)$ along $g_4$.
+  The case for $(f_1; f_3)$ follows because $f_1$ and $f_3$ are the unique pullbacks of $f_2$ and $f_4$ (along $g_2$ and $g_3$), respectively.
+  If the arrows are unique then their composition is unique, thus $(f_1; f_3)$ must be the pullback of $(f_2; f_4)$ along $g_3$.
+
+  Next, we show that if the overall rectangle and right square are pullbacks, the left square is a pullback.
+  
+  That is, we have:
+  
+  \hfill{}
+  \begin{tikzpicture}
+    \node (1) {};
+    \node[right of=1,xshift=1cm] (2) {};
+    \node[right of=2,xshift=1cm] (3) {};
+    \node[below of=1,yshift=-1cm] (4) {};
+    \node[right of=4,xshift=1cm] (5) {};
+    \node[right of=5,xshift=1cm] (6) {};
+    %% Horizontal arrows
+    \draw[->] (1) -- node[above] {$f_1; f_3$} (3);
+    \draw[->] (4) -- node[below] {$f_2; f_4$} (6);
+    %% Vertical arrows
+    \draw[->] (1) -- node[right] {$g_1$} (4);
+    \draw[->] (3) -- node[right] {$g_3$} (6);
+    %% pullback stuff
+    \node[above left of=1,xshift=-1cm,yshift=1cm] (7) {};
+    \draw[dashed,->] (7) -- node[above]{$k$} (1);
+    \draw[->] (7) -- node[above]{$i$} (3);
+    \draw[->] (7) -- node[left]{$j$} (4);
+  \end{tikzpicture}
+  \hfill{}
+  \begin{tikzpicture}
+    \node (1) {};
+    \node[right of=1,xshift=1cm] (2) {};
+    \node[below of=1,yshift=-1cm] (4) {};
+    \node[right of=4,xshift=1cm] (5) {};
+    %% Horizontal arrows
+    \draw[->] (1) -- node[above]{$f_3$}(2);
+    \draw[->] (4) -- node[below]{$f_4$}(5);
+    %% Vertical arrows
+    \draw[->] (1) -- node[right]{$g_2$}(4);
+    \draw[->] (2) -- node[right]{$g_3$}(5);
+    %% pullback stuff
+    \node[above left of=1,xshift=-1cm,yshift=1cm] (7) {};
+    \draw[dashed,->] (7) -- node[above]{$k_2$} (1);
+    \draw[->] (7) -- node[above]{$i_2$} (2);
+    \draw[->] (7) -- node[left]{$j_2$} (4);
+  \end{tikzpicture}
+  \hfill{}
+
+  and want to show:
+  \begin{center}
+    \begin{tikzpicture}
+      \node (1) {};
+      \node[right of=1,xshift=1cm] (2) {};
+      \node[below of=1,yshift=-1cm] (4) {};
+      \node[right of=4,xshift=1cm] (5) {};
+      \node[right of=5,xshift=1cm] (6) {};
+      %% Horizontal arrows
+      \draw[->] (1) -- node[above]{$f_1$} (2);
+      \draw[->] (4) -- node[below] {$f_2$} (5);
+      %% Vertical arrows
+      \draw[->] (1) -- node[right] {$g_1$} (4);
+      \draw[->] (2) -- node[right] {$g_2$} (5);
+      %% pullback stuff
+      \node[above left of=1,xshift=-1cm,yshift=1cm] (7) {};
+      \draw[dashed,->] (7) -- node[above]{$k_1$} (1);
+      \draw[->] (7) -- node[above]{$i_1$} (2);
+      \draw[->] (7) -- node[left]{$j_1$} (4);  
+    \end{tikzpicture}
+  \end{center}
+  
+  Again, we know the arrow $g_1$ is the pullback of $g_2$ along $f_2$.
+  This is uniquely determined by the rectangle being a pullback.
+  Then to show that $f_1$ is the pullback of $f_2$ along $g_2$, we use the uniqueness of $g_2$ and $f_2$ (which comes from the right square being a pullback).
+  Because they are uniquely determined and because the arrow $(f_1; f_2)$ of the overall rectangle is uniquely determined, $f_1$ must be uniquely determined for the left square.
 
 \item []
 \item [1.8.7.2]
