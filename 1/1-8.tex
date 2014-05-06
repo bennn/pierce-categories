@@ -200,8 +200,13 @@
   \end{center}
   
   Because $g$ is monic, we know that if $a; g = b; g$ then $a = b$.
-  From the above diagram, we know that $f'; g = j; g$.
-  Therefore we have that $f' = j$; as a consequence, $X$ must be $P$ and $k$ must be $id_P$.
+  Thus if $f'; g = j; g$ then we have $f' = j$.
+  This would imply $X = P$ and $k = id_P$.
+
+  However, $j$ can take a slightly more general form.
+  Provided it travels through $f'$, it may begin at any object $X$.
+  More specifically, it could be an arrow $(j'; f'); g$, as shown below.
+  If this is the case, then $(j'; f'); g = (k; f'); g$, which implies that $j' = k$.
   \begin{center}
     \begin{tikzpicture}
       \node (1) {$P$};
@@ -216,13 +221,15 @@
       \draw[->] (1) -- node[right] {$g'$} (4);
       \draw[->] (2) -- node[right] {$g$} (5);
       %% pullback stuff
-      \node[above left of=1,xshift=-1cm,yshift=1cm] (7) {$P$};
-      \draw[dashed,->] (7) -- node[above]{$id_A$} (1);
-      \draw[->] (7) -- node[above]{$f'$} (2);
+      \node[above left of=1,xshift=-1cm,yshift=1cm] (7) {$X$};
+      \draw[dashed,->] (7) -- node[above]{$k$} (1);
+      \draw[->] (7) -- node[above]{$j'; f'$} (2);
       \draw[->] (7) -- node[left]{$i$} (4);  
     \end{tikzpicture}
   \end{center}
-  TODO
+  Assume now that $g'$ is not monic.
+  Then we could have two unequal arrows $b_1 : X \rightarrow P$ and $b_2 : Y \rightarrow P$ that make the diagram commute.
+  This would contradict the uniqueness of $k$ and the monicity of $g$.
 
 \newpage
 \item [1.8.7.3]
