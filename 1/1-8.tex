@@ -175,7 +175,54 @@
 
 \newpage
 \item [1.8.7.2]
+  The goal is to show that if $g'$ and $f'$ constitute the pullback of arrows $g$ and $f$ where $g$ is monic, then $g'$ must be monic.
+  To complete the pullback diagram, let $i$ and $j$ be arrows from an arbitrary object $X$ to the domains of $f$ and $g$, respectively, and let $k$ be the unique arrow from $X$ to $P$.
   
+  \begin{center}
+    \begin{tikzpicture}
+      \node (1) {$P$};
+      \node[right of=1,xshift=1cm] (2) {};
+      \node[below of=1,yshift=-1cm] (4) {};
+      \node[right of=4,xshift=1cm] (5) {};
+      \node[right of=5,xshift=1cm] (6) {};
+      %% Horizontal arrows
+      \draw[->] (1) -- node[above]{$f'$} (2);
+      \draw[->] (4) -- node[below] {$f$} (5);
+      %% Vertical arrows
+      \draw[->] (1) -- node[right] {$g'$} (4);
+      \draw[->] (2) -- node[right] {$g$} (5);
+      %% pullback stuff
+      \node[above left of=1,xshift=-1cm,yshift=1cm] (7) {$X$};
+      \draw[dashed,->] (7) -- node[above]{$k$} (1);
+      \draw[->] (7) -- node[above]{$j$} (2);
+      \draw[->] (7) -- node[left]{$i$} (4);  
+    \end{tikzpicture}
+  \end{center}
+  
+  Because $g$ is monic, we know that if $a; g = b; g$ then $a = b$.
+  From the above diagram, we know that $f'; g = j; g$.
+  Therefore we have that $f' = j$; as a consequence, $X$ must be $P$ and $k$ must be $id_P$.
+  \begin{center}
+    \begin{tikzpicture}
+      \node (1) {$P$};
+      \node[right of=1,xshift=1cm] (2) {};
+      \node[below of=1,yshift=-1cm] (4) {};
+      \node[right of=4,xshift=1cm] (5) {};
+      \node[right of=5,xshift=1cm] (6) {};
+      %% Horizontal arrows
+      \draw[->] (1) -- node[above]{$f'$} (2);
+      \draw[->] (4) -- node[below] {$f$} (5);
+      %% Vertical arrows
+      \draw[->] (1) -- node[right] {$g'$} (4);
+      \draw[->] (2) -- node[right] {$g$} (5);
+      %% pullback stuff
+      \node[above left of=1,xshift=-1cm,yshift=1cm] (7) {$P$};
+      \draw[dashed,->] (7) -- node[above]{$id_A$} (1);
+      \draw[->] (7) -- node[above]{$f'$} (2);
+      \draw[->] (7) -- node[left]{$i$} (4);  
+    \end{tikzpicture}
+  \end{center}
+  TODO
 
 \newpage
 \item [1.8.7.3]
@@ -273,6 +320,8 @@
       \draw[->] (4) -- node[left]{} (7);
     \end{tikzpicture}
   \end{center}
+
+  %% TODO
 
 \end{enumerate}
 \end{document}
