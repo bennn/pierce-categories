@@ -102,6 +102,56 @@
 \item [1.8.7.2]
 \item []
 \item [1.8.7.3]
+  Given a category where every pair of objects has a product and every pair of arrows with a common codomain has an equalizer, we construct pullbacks for each pair of arrows with a common codomain.
+  We begin with our pair of arrows, $f : B \rightarrow D$ and $g : C \rightarrow D$:
+  \begin{center}
+    \begin{tikzpicture}
+      \node (1) {};
+      \node[right of=1,xshift=1cm] (2) {$B$};
+      \node[below of=1,yshift=-1cm] (3) {$C$};
+      \node[right of=3,xshift=1cm] (4) {$D$};
+
+      \draw[->] (2) -- node[right] {$f$} (4);
+      \draw[->] (3) -- node[above] {$g$} (4);
+    \end{tikzpicture}
+  \end{center}
+  Because every pair of objects has a product, we can connect the domains of $f$ and $g$ via their product and its projection arrows:
+  \begin{center}
+    \begin{tikzpicture}
+      \node (1) {$B \times C$};
+      \node[right of=1,xshift=1cm] (2) {$B$};
+      \node[below of=1,yshift=-1cm] (3) {$C$};
+      \node[right of=3,xshift=1cm] (4) {};
+
+      \draw[->] (1) -- node[above] {$\pi_2$} (2);
+      \draw[->] (1) -- node[left] {$\pi_1$} (3);
+    \end{tikzpicture}
+  \end{center}
+  From here the goal is to connect the diagrams so that they commute.
+  However, we do not have that $\pi_1; g = \pi_2; f$; they may not agree on all values.
+  But each composition is itself an arrow and we know by assumption that every pair of arrows has an equalizer.
+  Therefore we have the equalizer $e$ making $e; \pi_1; g = e; \pi_2; g$ true.
+  Moreover this is our pullback.
+  For any other arrow from an object $X$ to the domains of $f$ and $g$, we have a unique arrow connecting $X$ to the domain of $e$.
+  This is the pullback condition.
+  \begin{center}
+    \begin{tikzpicture}
+      \node (1) {$P$};
+      \node[right of=1,xshift=1cm] (2) {$B$};
+      \node[below of=1,yshift=-1cm] (3) {$C$};
+      \node[right of=3,xshift=1cm] (4) {$D$};
+      \node[above left of=1,xshift=-1cm,yshift=1cm] (5) {$X$};
+
+      \draw[->] (1) -- node[below] {$e; \pi_2$} (2);
+      \draw[->] (1) -- node[right] {$e; \pi_1$} (3);
+      \draw[->] (2) -- node[right] {$f$} (4);
+      \draw[->] (3) -- node[above] {$g$} (4);
+      \draw[dashed,->] (5) -- (1);
+      \draw[->] (5) -- (2);
+      \draw[->] (5) -- (3);
+    \end{tikzpicture}
+  \end{center}
+
 \item []
 \item [1.8.7.4]
   A pushout of arrows $f : A \rightarrow B$ and $g : A \rightarrow C$ is a pair of arrows $f' : C \rightarrow D$ and $g' : B \rightarrow D$ with a common codomain such that for any other pair of arrows from the domains of $f$ and $g$ to a common codomain $X$ there is a unique arrow $k : D \rightarrow X$ making the following diagram commute.
