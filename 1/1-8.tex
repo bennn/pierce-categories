@@ -199,14 +199,11 @@
     \end{tikzpicture}
   \end{center}
   
-  Because $g$ is monic, we know that if $a; g = b; g$ then $a = b$.
-  Thus if $f'; g = j; g$ then we have $f' = j$.
-  This would imply $X = P$ and $k = id_P$.
+  Because $g$ is monic, we know that $j; g = (k; f'); g$, therefore $j = (k; f')$.
+  Furthermore, for any other object $X'$ with an arrow $j' : X' \rightarrow B$ we have the equalities $j'; g = (k'; f'); g$, $j' = k'; f'$, and $k'; f' = k; f'$.
+  (We elide the arrow $i'$ from $X$ to the codomain of $g'$ to keep the diagram simpler.)
+  Via this last equality, we see that $k' = k$.
 
-  However, $j$ can take a slightly more general form.
-  Provided it travels through $f'$, it may begin at any object $X$.
-  More specifically, it could be an arrow $(j'; f'); g$, as shown below.
-  If this is the case, then $(j'; f'); g = (k; f'); g$, which implies that $j' = k$.
   \begin{center}
     \begin{tikzpicture}
       \node (1) {$P$};
@@ -223,13 +220,20 @@
       %% pullback stuff
       \node[above left of=1,xshift=-1cm,yshift=1cm] (7) {$X$};
       \draw[dashed,->] (7) -- node[above]{$k$} (1);
-      \draw[->] (7) -- node[above]{$j'; f'$} (2);
-      \draw[->] (7) -- node[left]{$i$} (4);  
+      \draw[->] (7) -- node[above]{$k; f'$} (2);
+      \draw[->] (7) -- node[left]{$i$} (4);
+      %% second pullback
+      \node[above left of=2,xshift=2cm,yshift=1cm] (8) {$X'$};
+      \draw[dashed,->] (8) -- node[above]{$k'$} (1);
+      \draw[->] (8) -- node[above]{$j'$} (2);
+      %% \draw[->] (8) -- node[left]{$i'$} (4);
     \end{tikzpicture}
   \end{center}
-  Assume now that $g'$ is not monic.
-  Then we could have two unequal arrows $b_1 : X \rightarrow P$ and $b_2 : Y \rightarrow P$ that make the diagram commute.
-  This would contradict the uniqueness of $k$ and the monicity of $g$.
+
+  Thus the unique arrows to $P$ are the same.
+  That is, for any object $X$ that has arrows to the codomains of $f'$ and $g'$ that make the pullback diagram commute, the unique arrow $k : X \rightarrow P$ is the same invariant of $X$.
+  Clearly, there must be only one $X$ and only one $k$.
+  It then follows trivially that $g'$ is a monomorphism; there is only one arrow ($k$) satisfying the equation $a; g = b; g$.
 
 \newpage
 \item [1.8.7.3]
@@ -328,7 +332,6 @@
     \end{tikzpicture}
   \end{center}
 
-  %% TODO
 
 \end{enumerate}
 \end{document}
