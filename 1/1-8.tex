@@ -332,6 +332,24 @@
     \end{tikzpicture}
   \end{center}
 
+  In the category \textbf{Set}, the arrow from $B$ to $B+C$ should be the left injection $\iota_1$ and likewise the arrow from $C$ to $B+C$ should be $\iota_2$.
+  These arrows must satisfy the condition that any other pair of arrows from $B$ and $C$ to a codomain $X$ uniquely determine an arrow $k : B+C \rightarrow X$.
+  Provided $\iota_1$ and $\iota_2$ are coequalizers of $f$ and $g$, this condition holds.
+  
+  \begin{center}
+    \begin{tikzpicture}
+      \node (1) {$A$};
+      \node [left of=1,xshift=-1cm] (2) {$B$};
+      \node [left of=2,xshift=-1cm] (3) {$B+C$};
+      \node [below of=3,yshift=-1cm] (4) {$X$};
+      
+      \draw[transform canvas={yshift=0.1cm},->] (1) -- node[above] {$f$} (2);
+      \draw[transform canvas={yshift=-0.1cm},->] (1) -- node[below] {$g$} (2);
+      \draw[->] (2) -- node[above] {$\iota_1$} (3);
+      \draw[dashed,->] (3) -- (4);
+      \draw[->] (2) -- (4);
+    \end{tikzpicture}
+  \end{center}
 
 \end{enumerate}
 \end{document}
