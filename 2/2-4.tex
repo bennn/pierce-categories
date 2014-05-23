@@ -1,0 +1,39 @@
+\documentclass{article}
+%% Chapter 2 Section 4: Adjoints
+
+\usepackage{amsmath}
+\usepackage{palatino}
+\usepackage{tikz}
+
+\newcommand{\one}{\mathbf{1}}
+\newcommand{\cat}{\mathbf{C}}
+
+\begin{document}
+
+\begin{enumerate}
+\item [2.4.5]
+  \begin{itemize}
+  \item 
+    Not certain about this, but I think the unit diagram is:
+    \begin{center}
+      \begin{tikzpicture}
+        \node (1) {$\one$};
+        \node [right of=1, xshift=1cm] (2) {$\one$};
+        \node [below of=2, yshift=-1cm] (3) {$\one$};
+        
+        \draw (1) -- node [above] {$\iota$} (2);
+        \draw (1) -- node[left] {$f$} (3);
+        \draw (2) -- node [right] {$T~f^{\#}$} (3);
+      \end{tikzpicture}
+    \end{center}
+    The natural transformation $\iota : \one \rightarrow \one$ is defined by Pierce thus constraining the top two nodes and the functor $T : \cat \rightarrow \one$ is the right adjoint, constraining the bottom node to be $\one$.
+    The category $\cat$ is only involved with the function $f^{\#}$.
+    It acts the single $\cat$-object obtained by lifting the unique object of $\one$ into $\cat$.
+
+    Not sure how to identify the initial object or the existence of unique arrows.
+  \item 
+  \end{itemize}
+\item[]
+\item[2.4.7]
+\end{enumerate}
+\end{document}
