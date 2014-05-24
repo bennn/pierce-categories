@@ -17,36 +17,39 @@
 \item [2.4.5]
   \begin{description}
   \item [Unit:]
-    Not certain about this, but I think the unit diagram is:
+    The unit diagram operates on the distinguised object $*$ of the category $\one$ and arbitrary objects $y$ of the category $\cat$.
+    The functor $F : \one \rightarrow \cat$ is the left adjoint of the constant functor $T : \cat \rightarrow \one$ noted by Pierce.
+    Additionally the unit $\iota : \id_\one \rightarrow \id_\one$ is fixed.
     \begin{center}
       \begin{tikzpicture}
-        \node (1) {$\one$};
-        \node [right of=1, xshift=1cm] (2) {$\one$};
-        \node [below of=2, yshift=-1cm] (3) {$\one$};
+        \node (1) {$*$};
+        \node [right of=1, xshift=1cm] (2) {$T(F(*))$};
+        \node [below of=2, yshift=-1cm] (3) {$T(y)$};
         
         \draw[->] (1) -- node [above] {$\iota$} (2);
-        \draw[->] (1) -- node[left] {$f$} (3);
+        \draw[->] (1) -- node[below left] {$f$} (3);
         \draw[->] (2) -- node [right] {$T~f^{\#}$} (3);
       \end{tikzpicture}
     \end{center}
-    The natural transformation $\iota : \one \rightarrow \one$ is defined by Pierce thus constraining the top two nodes and the functor $T : \cat \rightarrow \one$ is the right adjoint, constraining the bottom node to be $\one$.
-    The category $\cat$ is only involved with the function $f^{\#}$.
-    It acts the single $\cat$-object obtained by lifting the unique object of $\one$ into $\cat$.
+    Looking back at the definition of an adjunction, we have that for each object of $\one$, each object of $\cat$, and each $\one$-arrow $f: X \rightarrow T(y)$ there is a unique $\cat$ arrow $f^{\#} : F(*) \rightarrow y$.
+    Because there is only one object in the category $\one$, this definition says that for each object in $\cat$ there is a unique arrow $f^{\#}$ taking the image of the unique object of $\one$ to this object $y$.
+    Thus the image of $*$ must be an initial object.
 
-    Not sure how to identify the initial object or the existence of unique arrows.
-  %% \item[]
-  %% \item [Co-unit:]
-  %%   I \emph{think} the counit diagram is:
-  %%   \begin{center}
-  %%     \begin{tikzpicture}
-  %%       \node (1) {$\cat$};
-  %%       \node [below of=1, yshift=-1cm] (2) {$\cat$};
-  %%       \node [right of=1, xshift=1cm] (3) {$\cat$};
-  %%       \draw[->] (2) -- node [left] {$F~g^*$} (1);
-  %%       \draw[->] (2) -- node[above] {$\varepsilon$} (3);
-  %%       \draw[->] (1) -- node [right] {$g$} (3);
-  %%     \end{tikzpicture}
-  %%   \end{center}
+  \item[]
+  \item [Co-unit:]
+    Similarly, the counit diagram works in the opposite direction.
+    \begin{center}
+      \begin{tikzpicture}
+        \node (1) {$F~T~y$};
+        \node [below of=1, yshift=-1cm] (2) {$F~*$};
+        \node [right of=1, xshift=1cm] (3) {$y$};
+        \draw[->] (2) -- node [left] {$F~g^*$} (1);
+        \draw[->] (1) -- node[above] {$\varepsilon$} (3);
+        \draw[->] (2) -- node [below right] {$g$} (3);
+      \end{tikzpicture}
+    \end{center}
+    We have that for each $y \in \cat$ the counit $\varepsilon$ picks out the unique arrow from the initial object $F~*$ to $y$.
+    Existence follows because there is one arrow in $\one$ that we must apply the functor $F$ to and uniqueness follows from the definition of adjunction.
   \end{description}
 \item[]
 \item[2.4.7]
