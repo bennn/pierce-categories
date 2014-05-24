@@ -35,7 +35,7 @@
     Because there is only one object in the category $\one$, this definition says that for each object in $\cat$ there is a unique arrow $f^{\#}$ taking the image of the unique object of $\one$ to this object $y$.
     Thus the image of $*$ must be an initial object.
 
-  \item[]
+  \vfill{}
   \item [Co-unit:]
     Similarly, the counit diagram works in the opposite direction.
     \begin{center}
@@ -51,10 +51,11 @@
     We have that for each $y \in \cat$ the counit $\varepsilon$ picks out the unique arrow from the initial object $F~*$ to $y$.
     Existence follows because there is one arrow in $\one$ that we must apply the functor $F$ to and uniqueness follows from the definition of adjunction.
   \end{description}
-\item[]
+  \vfill{}
+\newpage
 \item[2.4.7]
   We have a category $\cat$ with products, a product functor $\pifun : \cat \rightarrow \cat \times \cat$ and a diagonal functor $\diagfun : \cat \times \cat \rightarrow \cat$.
-  The diagram for the unit is:
+  According to the man himself, the diagram for the unit is:
   \begin{center}
     \begin{tikzpicture}
       \node (1) {$C$};
@@ -62,8 +63,8 @@
       \node[below of=2,yshift=-1cm] (3) {$A \times B$};
 
       \draw[->] (1) -- node[above] {$\langle id_C, id_C \rangle$} (2);
-      \draw[->] (1) -- node[below left] {$\langle f , g \rangle$} (3);
-      \draw[->] (2) -- node[right] {$f \times g$} (3);
+      \draw[->] (1) -- node[below left] {$\langle f_1 , f_2 \rangle$} (3);
+      \draw[->] (2) -- node[right] {$\pi~f^{\#}$} (3);
     \end{tikzpicture}
   \end{center}
 
@@ -74,12 +75,16 @@
       \node [below of=1,yshift=-1cm] (2) {$A \times B$};
       \node [right of=1,xshift=1cm] (3) {$C$};
       
-      \draw[->] (2) -- node[left] {$\langle f , g \rangle$} (1);
-      \draw[->] (2) -- node[right] {$\pi_1;~f$} (3);
-      \draw[->] (1) -- node[above] {$\diagfun$} (3);
+      \draw[->] (2) -- node[left] {$\diagfun~g^*$} (1);
+      \draw[->] (2) -- node[below right] {$(g_1, g_2)$} (3);
+      \draw[->] (1) -- node[above] {$\varepsilon$} (3);
     \end{tikzpicture}
   \end{center}
-  To show that $A \times B$ satisfies the definition of a product, we need to find projection arrows $\pi_1 : A \times B \rightarrow A$ and $\pi_2 : A \times B \rightarrow B$ and guarantee that for any object $C$ with arrows $f : C \rightarrow A$ and $g : C \rightarrow B$ we have a unique arrow $\langle f, g \rangle : C \rightarrow A \times B$.
-  The counit diagram provides our projection arrows and the uniquely determined function $f \times g \circ \langle \id_C \times \id_C \rangle$ of the unit diagram gives the map from $C$ to $A \times B$.
+  For $A \times B$ to match the definition of a product object it needs a unique arrow from any other object $X$ in $\cat$ that has arrows $f : X \rightarrow A$ and $g : X \rightarrow B$ and projection arrows to both $A$ and $B$.
+  First, the unique arrow from an arbitrary object arises from the arrow $f^{\#}$ in the unit diagram.
+  For an object $C$ with arrows $f_1$ and $f_2$ taking it to $A$ and $B$, respectively, the arrow $f^{\#}$ is uniquely determined to take the pair of objects $(C, C)$ to the pair of objects $(A,B)$.
+  When mapped by the product functor, this gives the unique arrow into the product object $A \times B$.
+  The projection arrows follow from the counit diagram because the counit $\varepsilon$ carries a pair formed from the product object $A \times B$ (that is, $(A \times B), (A \times B)$) to the pair of $A$ and $B$.
+  Therefore $\varepsilon$ must be the pair of arrows $(\pi_1, \pi_2)$.
 \end{enumerate}
 \end{document}
