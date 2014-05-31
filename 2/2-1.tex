@@ -2,6 +2,10 @@
 
 \usepackage{amsmath}
 
+\newcommand{\pow}{\mathcal{P}}
+\newcommand{\fpow}{\mathbf{\mathcal{P}}}
+\newcommand{\cset}{\mathbf{Set}}
+
 \begin{document}
 
 \begin{enumerate}
@@ -31,7 +35,17 @@
 
 \item[]
 \item [2.1.10.2]
+  We define the powerset operator $\pow : S \rightarrow 2^S$, as an endofunctor $\fpow$ on the category $\cset$.
+  \begin{itemize}
+  \item For objects $A \in \cset$, $\fpow(A)$ is the powerset of $A$, $\pow(A) \in \cset$.
+  \item Identity arrows on sets $A$ are lifted to identity arrows on the corresponding powerset, $\pow(A)$.
+    This the functor conserves identities.
+  \item For morphisms $f : A \rightarrow B$, $\fpow(f) : \pow(A) \rightarrow \pow(B)$ is the result of applying $f$ to all sets $a \in \pow(A)$.
+    Composition $g \circ f$ is then preserved because $f : A \rightarrow B$ maps to $\fpow(f) : \pow(A) \rightarrow \pow(B)$ and $g : B \rightarrow C$ maps to $\fpow(g) : \pow(B) \rightarrow \pow(C)$.
+  \end{itemize}
 
+  At first I wanted to define $\fpow(f)$ as extracting the highest-cardinality element $A$ from the set $\pow(A)$, applying $f(A)$, then taking $\pow(f(A))$.
+  But if $A$ is the domain of $f$ then we can take $f(A')$ for any $A' \subseteq A$, so it's easier this way.
 \item[]
 \item[2.1.10.3] The functors between monoids considered as one-object categories are the structure-preserving maps between the two monoids.
   These are monoid homomorphisms.
