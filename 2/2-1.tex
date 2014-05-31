@@ -1,7 +1,11 @@
 \documentclass{article}
 
 \usepackage{amsmath}
+\usepackage{palatino}
 
+\newcommand{\diag}{\Delta}
+\newcommand{\ccat}{\mathbf{C}}
+\newcommand{\id}{\mathbf{id}}
 \newcommand{\pow}{\mathcal{P}}
 \newcommand{\fpow}{\mathbf{\mathcal{P}}}
 \newcommand{\cset}{\mathbf{Set}}
@@ -52,6 +56,10 @@
 
 \item[]
 \item [2.1.10.4]
+  Pierce defines the diagonal functor $\diag : \ccat \rightarrow \ccat \times \ccat$ on a category $\ccat$ as taking each $\ccat$-object $A$ to the object $(A,~A)$.
+  
+  The corresponding action of $\diag$ on arrows takes morphisms $f$ to the pair of morphism $(f,~f)$.
+  Identities are preserved because $(\id_A,~\id_A)$ is the identity arrow for the object $(A,~A) \in \ccat \times \ccat$ and composition is similarly the composition of arrows applied pointwise in $\ccat \times \ccat$.
 
 \item[]
 \item [2.1.12]
