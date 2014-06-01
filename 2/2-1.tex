@@ -2,6 +2,7 @@
 
 \usepackage{amsmath}
 \usepackage{palatino}
+\usepackage{tikz}
 
 \newcommand{\diag}{\Delta}
 \newcommand{\ccat}{\mathbf{C}}
@@ -63,12 +64,34 @@
 
 \item[]
 \item [2.1.12]
-  In the contravariant hom-functor for an object $B \in \ccat$, called $\ccat(---,B)$:
+  In the contravariant hom-functor for an object $B \in \ccat$, called $\ccat(-,B)$:
   \begin{itemize}
   \item Each object $A \in \ccat$ maps to $\ccat(A,B)$, the set of all arrows from $A$ to $B$.
   \item Each arrow $f : A \rightarrow C$ maps to the function $\ccat(f, B) : \ccat(C,B) \rightarrow \ccat(A,B)$ defined for a function $g : C \rightarrow B$ as $\ccat(f,B)(g) = g \circ f$.
   \end{itemize}
- 
+
+  This hom-functor combined with the covariant one combine to form a bifunctor where:
+  \begin{itemize}
+  \item Each pair of objects $A,B$ map to $\ccat(A,B)$, the set of all morphisms from $A$ to $B$.
+  \item Each pair of arrows $f : C \rightarrow A,~g : B \rightarrow D$ define a functor $\ccat(f,g) : \ccat(A,B) \rightarrow \ccat(C,D)$
+  \item An object, arrow pair or an arrow, object pair behave like the covariant and contravariant hom-functors, respectively.
+  \end{itemize}
+  The bifunctor arises because the following diagram commutes for functions $f : C \rightarrow A$ and $g : B \rightarrow D$.
+
+  \begin{center}
+    \begin{tikzpicture}
+      \node (1) {$\ccat(A,B)$};
+      \node[right of=1,xshift=3cm] (2) {$\ccat(C,B)$};
+      \node[below of=1,yshift=-2cm] (3) {$\ccat(A,D)$};
+      \node[below of=2,yshift=-2cm] (4) {$\ccat(C,D)$};
+
+      \draw[->] (1) -- node[above] {$\ccat(f,~B)$} (2);
+      \draw[->] (1) -- node[right] {$\ccat(A,~g)$} (3);
+      \draw[->] (2) -- node[right] {$\ccat(C,~g)$} (4);
+      \draw[->] (3) -- node[below] {$\ccat(f,~D)$} (4);
+    \end{tikzpicture}
+  \end{center}
+  
 \end{enumerate}
 
 \end{document}
