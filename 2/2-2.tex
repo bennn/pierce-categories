@@ -4,9 +4,43 @@
 \usepackage{palatino}
 \usepackage{tikz}
 
+\newcommand{\carrier}[1]{|#1|}
+\newcommand{\ar}[1]{\mathbf{ar(#1)}}
+
 \begin{document}
 \begin{enumerate}
 \item [2.2.1]
+  We want to show that the definition of a homomorphism in an $\Omega$-algebra is equivalent to the definition of a homomorphism in an $F$-algebra with signature $\Omega$.
+  
+  First, let $\ar{\omega}$ denote the arity of each operator symbol $\omega \in \Omega$.
+  Additionally let $a_\omega$ be the interpretation of the operator symbol $a$ in the $\Omega$-algebra $A$.
+  A homomorphism between $\Omega$-algebras $A$ and $B$ is a function $h : \carrier{A} \rightarrow \carrier{B}$ such that for each $\omega \in \Omega$ and $(x_1,\ldots,x_{\ar{\omega}}) \in \carrier{A}^{\ar{\omega}}$,
+  \begin{align}
+    h(a_\omega~(x_1,\ldots,x_{\ar{\omega}})) = b_\omega~(h(x_1),\ldots,h(x_{\ar{\omega}}))
+  \end{align}
+
+  Next, an $F$-homomorphism is defined as a function $h : \carrier{A} \rightarrow\carrier{B}$ making the following diagram commute.
+  \begin{center}
+    \begin{tikzpicture}
+      \node (1) {$A$};
+      \node[right of=1,xshift=2cm] (2) {$B$};
+      \node[below of=1,yshift=-1cm] (3) {$F\,A$};
+      \node[right of=3,xshift=2cm] (4) {$F\,B$};
+
+      \draw[->] (1) -- node[above] {$h$} (2);
+      \draw[->] (3) -- node[right] {$a$} (1);
+      \draw[->] (3) -- node[below]{$F\,h$} (4);
+      \draw[->] (4) -- node[right] {$b$} (2);
+    \end{tikzpicture}
+  \end{center}
+
+  To prove equivalence, we first show that if $h$ is an $\Omega$-homomorphism then the diagram must commute.
+  This follows immediately from the definition of an $\Omega$-homomorphism; the composition $h \circ a$ applied to the object $(\omega, (x_1,\ldots,x_{\ar{\omega}})) \in F\,A$ is exactly $h(a_\omega, (x_1,\ldots,x_{\ar{\omega}}))$.
+  We know by definition that this is equivalent to $b_\omega~(h(x_1),\ldots,h(x_{\ar{\omega}}))$, which is exactly the composition $b \circ F\,h$ applied to the object $(\omega, (x_1,\ldots,x_{\ar{\omega}})) \in F\,B$.
+
+  Conversely, if the diagram commutes then $h$ must be an $\Omega$-homomorphism because the compositions $h \circ a$ and $b \circ F\,h$ are equal.
+  Thus the equation (1) proving that $h$ is an $\Omega$-homomorphism holds.
+\item[]
 \item [2.2.4.1]
 \item [2.2.4.2]
 \end{enumerate}
