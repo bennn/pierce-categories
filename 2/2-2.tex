@@ -6,6 +6,8 @@
 
 \newcommand{\carrier}[1]{|#1|}
 \newcommand{\ar}[1]{\mathbf{ar(#1)}}
+\newcommand{\kcat}{\mathbf{K}}
+\newcommand{\facat}{\textbf{F-Alg}}
 
 \begin{document}
 \begin{enumerate}
@@ -40,8 +42,21 @@
 
   Conversely, if the diagram commutes then $h$ must be an $\Omega$-homomorphism because the compositions $h \circ a$ and $b \circ F\,h$ are equal.
   Thus the equation (1) proving that $h$ is an $\Omega$-homomorphism holds.
-\item[]
+
+\newpage
 \item [2.2.4.1]
+  If $\kcat$ is a category and $F: \kcat \rightarrow \kcat$ is an endofunctor on $\kcat$ then the $F$-algebras and $F$-homomorphisms over $\kcat$ form a category $\facat$ as follows:
+  \begin{itemize}
+  \item Objects are $F$-algebras.
+  \item Morphisms are $F$-homomorphisms.
+  \item Identities are lifted from $\kcat$.
+  \subitem If $id_A : A \rightarrow A$ is the identity on an object $A \in \kcat$ then we get a morphism $F\,id_A : F\,A \rightarrow F\,A$ because $id_A$ is trivially a structure-preserving map (homomorphism) between objects in $\kcat$ and therefore $F$ must have an arrow $F\,id_A$ making the analog of the above diagram commute.
+  \item Composition is similarly lifted from $\kcat$.
+  \subitem If there exist homomorphisms $h_{AB} : A \rightarrow B$ and $h_{BC} : B \rightarrow C$ then the composition $h_{BC} \circ h_{AB}$ must exist in the category $\kcat$.
+    This composition is also trivially a homomorphism $h_{AC}$ from $A$ to $B$ and therefore the arrow $F\,h_{AC} = F\,h_{BC} \circ F\,h_{AB}$ must exist in the category $\facat$.
+  \end{itemize}
+
+\item[]
 \item [2.2.4.2]
 \end{enumerate}
 \end{document}
