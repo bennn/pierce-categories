@@ -55,9 +55,11 @@
   \item Morphisms are $F$-homomorphisms.
   \item Identities are lifted from $\kcat$.
   \subitem If $id_A : A \rightarrow A$ is the identity on an object $A \in \kcat$ then we get a morphism $F\,id_A : F\,A \rightarrow F\,A$ because $id_A$ is trivially a structure-preserving map (homomorphism) between objects in $\kcat$ and therefore $F$ must have an arrow $F\,id_A$ making the analog of the above diagram commute.
+  It follows that $F\,id_A = id_{F\,A}$ by definition of the functor $F$.
   \item Composition is similarly lifted from $\kcat$.
   \subitem If there exist homomorphisms $h_{AB} : A \rightarrow B$ and $h_{BC} : B \rightarrow C$ then the composition $h_{BC} \circ h_{AB}$ must exist in the category $\kcat$.
     This composition is also trivially a homomorphism $h_{AC}$ from $A$ to $B$ and therefore the arrow $F\,h_{AC} = F\,h_{BC} \circ F\,h_{AB}$ must exist in the category $\facat$.
+    Again, by definition of the functor $F$ we have that $F\,h{BC} \circ F\,h_{AB} = F\,(h_{BC} \circ h_{AB})$ and we're done.
   \end{itemize}
 
 \newpage
