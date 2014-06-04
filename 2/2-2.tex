@@ -14,6 +14,7 @@
 \item [2.2.1]
   We want to show that the definition of a homomorphism in an $\Omega$-algebra is equivalent to the definition of a homomorphism in an $F$-algebra with signature $\Omega$.
   
+  \subitem 
   First, let $\ar{\omega}$ denote the arity of each operator symbol $\omega \in \Omega$.
   Additionally let $a_\omega$ be the interpretation of the operator symbol $a$ in the $\Omega$-algebra $A$.
   A homomorphism between $\Omega$-algebras $A$ and $B$ is a function $h : \carrier{A} \rightarrow \carrier{B}$ such that for each $\omega \in \Omega$ and $(x_1,\ldots,x_{\ar{\omega}}) \in \carrier{A}^{\ar{\omega}}$,
@@ -21,6 +22,7 @@
     h(a_\omega~(x_1,\ldots,x_{\ar{\omega}})) = b_\omega~(h(x_1),\ldots,h(x_{\ar{\omega}}))
   \end{align}
 
+  \subitem 
   Next, an $F$-homomorphism is defined as a function $h : \carrier{A} \rightarrow\carrier{B}$ making the following diagram commute.
   \begin{center}
     \begin{tikzpicture}
@@ -36,10 +38,12 @@
     \end{tikzpicture}
   \end{center}
 
+  \subitem 
   To prove equivalence, we first show that if $h$ is an $\Omega$-homomorphism then the diagram must commute.
   This follows immediately from the definition of an $\Omega$-homomorphism; the composition $h \circ a$ applied to the object $(\omega, (x_1,\ldots,x_{\ar{\omega}})) \in F\,A$ is exactly $h(a_\omega, (x_1,\ldots,x_{\ar{\omega}}))$.
   We know by definition that this is equivalent to $b_\omega~(h(x_1),\ldots,h(x_{\ar{\omega}}))$, which is exactly the composition $b \circ F\,h$ applied to the object $(\omega, (x_1,\ldots,x_{\ar{\omega}})) \in F\,B$.
 
+  \subitem 
   Conversely, if the diagram commutes then $h$ must be an $\Omega$-homomorphism because the compositions $h \circ a$ and $b \circ F\,h$ are equal.
   Thus the equation (1) proving that $h$ is an $\Omega$-homomorphism holds.
 
@@ -60,6 +64,7 @@
 \item [2.2.4.2]
   The goal is to show that if an $F$-algebra $(A,a)$ is initial in the category $\facat$ then $a$ is an isomorphism.
 
+  \subitem 
   Consider the $\kcat$-object $F\,A$.
   We know it exists because $F : \kcat \rightarrow \kcat$ must be defined on all objects $A \in \kcat$.
   Furthermore, we know it must be the carrier of some object $F\,F\,A$ because the pair $(F\,A, F\,a)$ form an $F$-algebra.
@@ -67,6 +72,7 @@
   Thus the $h$ in $F\,h$ must be an arrow $h : A \rightarrow F\,A$.
   In particular, it must be the inverse of $a : F\,A \rightarrow A$.
   
+  \subitem 
   Pictorally, we have the following diagram where $F\,h$ is determined by the initiality of $F\,A$ and $h$ follows as a consequence:
   \begin{center}
     \begin{tikzpicture}
@@ -82,6 +88,7 @@
     \end{tikzpicture}
   \end{center}
 
+  \subitem 
   This initial object $(A,a)$ corresponds to a fixed point of $F$ because there is an isomorphism between $F\,A$ and $A$ and similarly between $F\,a$ and $a$.
   
 \end{enumerate}
