@@ -72,8 +72,6 @@
   Furthermore, we know it must be the carrier of some object $F\,F\,A$ because the pair $(F\,A, F\,a)$ form an $F$-algebra.
   Moreover, the initiality of $F\,A$ uniquely determines an arrow $F\,h : F\,A \rightarrow F\,F\,A$.
   Thus the $h$ in $F\,h$ must be an arrow $h : A \rightarrow F\,A$.
-  %% TODO
-  TO PROVE: it must be the inverse of $a : F\,A \rightarrow A$.
   
   \subitem 
   Pictorally, we have the following diagram where $F\,h$ is determined by the initiality of $F\,A$ and $h$ follows as a consequence:
@@ -91,8 +89,37 @@
     \end{tikzpicture}
   \end{center}
 
+  \subitem
+  %% TODO
+  What remains is to show that $h;a = id_A$ and that $a; h = id_{FA}$.
+  We extend the above diagram with more applications of $F\,a$ and $a$ to help reach this conclusion.
+
+  \begin{center}
+    \begin{tikzpicture}
+      \node (1) {$A$};
+      \node[right of=1,xshift=2cm] (2) {$F\,A$};
+      \node[below of=1,yshift=-1cm] (3) {$F\,A$};
+      \node[right of=3,xshift=2cm] (4) {$F\,F\,A$};
+      \node[right of=4,xshift=2cm] (5) {$F\,A$};
+      \node[right of=2,xshift=2cm] (6) {$A$};
+
+      \draw[dashed,->] (1) -- node[above] {$h$} (2);
+      \draw[->] (3) -- node[right] {$a$} (1);
+      \draw[dashed,->] (3) -- node[below]{$F\,h$} (4);
+      \draw[->] (4) -- node[right] {$F\,a$} (2);
+      \draw[->] (4) -- node[below] {$F\,a$} (5);
+      \draw[->] (2) -- node[above] {$a$} (6);
+      \draw[->] (5) -- node[right] {$a$} (6);
+    \end{tikzpicture}
+  \end{center}
   \subitem 
-  This initial object $(A,a)$ corresponds to a fixed point of $F$ because there is an isomorphism between $F\,A$ and $A$ and similarly between $F\,a$ and $a$.
+  Immediately, we have $h;a = id_A$ by initiality.
+  To show $a;h = id_{FA}$, we first note that the left square gives $a;h = F\,h;F\,a$.
+  Because $F$ is a functor, we may rewrite the right side to obtain $F\,h;F\,a = F\,(h;a)$.
+  However, this further rewrites to $F\,id_{A}$, and by definition of a functor $F\,id_A = id_{FA}$, thus completing the proof.
+
+  \subitem 
+  Lastly, this initial object $(A,a)$ corresponds to a fixed point of $F$ because there is an isomorphism between $F\,A$ and $A$ and similarly between $F\,a$ and $a$.
   
 \end{enumerate}
 \end{document}
