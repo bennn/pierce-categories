@@ -4,11 +4,11 @@
 \usepackage{tikz}
 \usepackage{palatino}
 
+\newcommand{\cset}{\mathbf{Set}}
+\newcommand{\cposet}{\mathbf{Poset}}
+
 \begin{document}
 \begin{enumerate}
-\item[1.9.8]
-
-\item[]
 \item[1.9.10.1]
   The goal is to show that the limit of the two object diagram with arrows $f: A \rightarrow B$ and $g : A \rightarrow B$ is an equalizer of $f$ and $g$.
   \begin{center}
@@ -92,7 +92,30 @@
 
 \item[]
 \item[1.9.10.3]
+  We can construct limits of arbitrary diagrams $D$ in $\cset$ or $\cposet$ by taking as limit the product object $\prod D_i$ of all objects in the diagram.
+  Firstly, the object $\prod D_i$ exists because $\cset$ and $\cposet$ are categories with products.
+  Commutativity of all mediating triangles $f_{ij} \circ \pi_i = \pi_j$ follows because all arrows $f_{ij}$ in $\cset$ and $\cposet$ are total maps.
+  Uniqueness of the limit $\prod D_i$ comes from the universal property of product objects.
+  \begin{center}
+    \begin{tikzpicture}
+      \node (1) {$\prod D_i$};
+      \node[below of=1,xshift=-1cm,yshift=-1cm] (2) {$D_i$};
+      \node[right of=2,xshift=2cm] (3) {$D_j$};
+
+      \draw[->] (1) -- node[left] {$\pi_i$} (2);
+      \draw[->] (1) -- node[right] {$\pi_j$} (3);
+      \draw[->] (2) -- node[above] {$f_{ij}$} (3);
+    \end{tikzpicture}
+  \end{center}
+
 \item[]
 \item[1.9.10.4]
+  Dually, colimits in $\cset$ and $\cposet$ are the coproduct of all objects in the diagram.
+  Again, the coproduct always exists because $\cset$ and $\cposet$ are categories with products, the mediating triangles commute because the arrows in these categories are total maps, and uniqueness follows from the universal property of coproducts.
+
+  Going further, we can dualize the limit theorem by using coproducts and coequalizers.
+  Construct the coproduct $\sum D_i$ of all objects in the diagram and the coproduct $\sum e$ of all edge destinations.
+  The colimit is the codomain of the coequalizer of the unique arrows from $\sum e$ to $\sum D_i$.
+  
 \end{enumerate}
 \end{document}
