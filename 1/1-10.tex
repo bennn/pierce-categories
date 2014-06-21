@@ -135,48 +135,43 @@
 \item [1.10.5.5]
   The goal is to show that $(B^A)^{A'}$ is isomorphic to $B^{A \times A'}$ in any cartesian-closed category.
 
-  %% TODO fix the A, A' mixup
-  Here goes.\footnote{This feels like a long and indirect argument. I will try again later.}
-  Because cartesian-closed categories have exponentials and binary products, we know that for any two objects $A$ and $A'$ both the exponential $A^{A'}$ and product $A \times A'$ exist.
-  Construct a function $\eval_1 : A^{A'} \times A' \rightarrow A \times A'$ as $eval_1(f,a) = (f a, a)$.
-
-  This function uniquely determines an arrow $C \rightarrow A^{A'}$ for every function $g : C \times A \rightarrow A \times A'$.
-  Let $C$ be $A \times A'$.
-  We can easily construct a function $g : (A \times A') \times A \rightarrow A \times A'$ that ignores its second argument and returns its first; therefore, we can use $\eval_1$ to uniquely determine a function $\curry{g} : A \times A' \rightarrow A^{A'}$.
+  One direction of this argument is fairly straightforward.
+  The exponential $B^{A \times A'}$ defines a function $\eval_1 : B^{A \times A'} \times (A \times A') \rightarrow B$, which in turn uniquely determines a function $\curry{g}$ for any function $g : C \times (A \times A') \rightarrow B$.
+  Taking $C$ to be $(B^A)^{A'}$, we can define $g : (B^A)^{A'} \rightarrow (A \times A') \rightarrow B$ as $\mathbf{fun}~f~(a,a') = f~a'~a$.
   \begin{center}
     \begin{tikzpicture}
-      \node (1) {$A^{A'} \times A$};
-      \node [right of=1,xshift=1cm] (2) {$A \times A'$};
-      \node [below of=1,yshift=-1cm] (3) {$(A \times A') \times A$};
-
-      \draw[->] (1) -- node[above] {$\eval_1$} (2);
-      \draw[->] (3) -- node[below right] {$g$} (2);
-      \draw[->,dashed] (3) -- node[left] {$\curry{g} \times \id_A$} (1);
+      \node (1) {$B^{A \times A'} \times (A \times A')$};
+      \node [below of=1,yshift=-1cm] (2) {$(B^A)^{A'} \times (A \times A')$};
+      \node [right of=1,xshift=2cm] (3) {$B$};
+      
+      \draw[->] (2) -- node [below right] {$g$} (3);
+      \draw[->,dashed] (2) -- node [left] {$\curry{g} \times \id_{A \times A'}$} (1);
+      \draw[->] (1) -- node [above] {$\eval_1$} (3);
     \end{tikzpicture}
   \end{center}
+  Now the uniquely determined arrow $\curry{g} : (B^A)^{A'} \rightarrow B^{A \times A'}$ is half our isomorphism.
 
-  With this unique $\curry{g}$, we can construct a unique map $(B^A)^{A'} \rightarrow B^{A \times A'}$ for each arrow $f \in (B^A)^{A'}$.
-  Simply compose $f \circ \curry{g}$.
-  Call this composition $k$.
-  It is one-half of our isomorphism.
+  For the reverse, we need to unroll the definition of $(B^A)^{A'}$.
+  As is, it defines an evaluation function that accepts one function $f : A' \rightarrow A$ to return a $B$.
+  Rather than taking a function on objects, we want to take just objects.
 
-  Now $k$ uniquely defines a function $\eval_2 : (B^A)^{A'} \times (A \times A') \rightarrow B$.
-  From here, we use the universality of $\eval_2$ to pick out a function $\curry{g'} : B^{A \times A'} \rightarrow (B^A)^{A'}$ in the same manner we chose $\curry{g}$, above.
-  Let $g': B^{A \times A'} \times (A \times A') \rightarrow B$ be defined simply as $\eval_3(f,a) = f a$.
+  Let $\eval_2 : (B^A)^{A'} \times A' \rightarrow B^A$ and $\eval_3 : B^A \times A \rightarrow B$ in the obvious way.
+  Then with a slight abuse of notation we can use their composition to obtain a $B$ from a pair $A' \times A$.
+  This composition $\eval_3 \circ \eval_2$ then uniquely determines a function $\curry{g'} : C \rightarrow B^{A \times A'}$ for each function $g' : C \times (A' \times A) \rightarrow B$.
+  Let $C$ be $B^{A \times A'}$ and let $g'$ permute its arguments then apply $\eval_1$ from above.
+  Now $\curry{g'}$ is the unique arrow taking $B^{A \times A'}$ to $(B^A)^{A'}$, thus completing the isomorphism.
   \begin{center}
     \begin{tikzpicture}
-      \node (1) {$(B^A)^{A'} \times (A \times A')$};
-      \node [right of=1,xshift=1cm] (2) {$B$};
-      \node [below of=1,yshift=-1cm] (3) {$B^{A \times A'} \times (A \times A')$};
-
-      \draw[->] (1) -- node[above] {$\eval_2$} (2);
-      \draw[->] (3) -- node[below right] {$\eval_3$} (2);
-      \draw[->,dashed] (3) -- node[left] {$\curry{\eval_3} \times \id_{A \times A'}$} (1);
+      \node (1) {$(B^A)^{A'} \times (A' \times A)$};
+      \node [below of=1,yshift=-1cm] (2) {$B^{A \times A'} \times (A' \times A)$};
+      \node [right of=1,xshift=4cm] (3) {$B$};
+      
+      \draw[->] (2) -- node [below right] {$g'$} (3);
+      \draw[->,dashed] (2) -- node [left] {$\curry{g'} \times \id_{A' \times A}$} (1);
+      \draw[->] (1) -- node [above] {$\eval_3 \circ \eval_2$} (3);
     \end{tikzpicture}
   \end{center}
-
-  This uniquely determines $\curry{\eval_3}$, the inverse of $k$, thus completing the desired isomorphism.
-
+  
   
 \item [1.10.5.6]
 \item [1.10.5.7]
