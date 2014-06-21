@@ -89,7 +89,7 @@
     \end{tikzpicture}
   \end{center}
   
-  Assuming $B^A$ is an exponential object and that $\eval{AB}$ is the arrow associated with this exponential, we know that for any other object $C$ and arrow $g : C \times A \rightarrow B$ we have a unique mediating arrow $\curry{g} : C \rightarrow B^A$ such that the following diagram commutes.
+  Assuming $B^A$ is an exponential object and that $\eval_{AB}$ is the arrow associated with this exponential, we know that for any other object $C$ and arrow $g : C \times A \rightarrow B$ we have a unique mediating arrow $\curry{g} : C \rightarrow B^A$ such that the following diagram commutes.
   \begin{center}
     \begin{tikzpicture}
       \node (1) {$B^A \times A$};
@@ -118,18 +118,6 @@
   \end{center}
   
   However, $\id_{B^A}$ is another unique arrow that also makes this diagram commute.
-  %% \begin{center}
-  %%   \begin{tikzpicture}
-  %%     \node (1) {$B^A \times A$};
-  %%     \node [below of=1,yshift=-1cm] (2) {$B^A \times A$};
-  %%     \node [right of=1,xshift=1cm] (3) {$B$};
-      
-  %%     \draw[->] (2) -- node [right] {$\eval_{AB}$} (3);
-  %%     \draw[->,dashed] (2) -- node [left] {$\id_{AB} \times \id_A$} (1);
-  %%     \draw[->] (1) -- node [above] {$\eval_{AB}$} (3);
-  %%   \end{tikzpicture}
-  %% \end{center}
-  %%
   This is more clearly shown if we collapse identical nodes in the diagram.
   \begin{center}
     \begin{tikzpicture}
@@ -145,6 +133,51 @@
 
 \newpage
 \item [1.10.5.5]
+  The goal is to show that $(B^A)^{A'}$ is isomorphic to $B^{A \times A'}$ in any cartesian-closed category.
+
+  %% TODO fix the A, A' mixup
+  Here goes.\footnote{This feels like a long and indirect argument. I will try again later.}
+  Because cartesian-closed categories have exponentials and binary products, we know that for any two objects $A$ and $A'$ both the exponential $A^{A'}$ and product $A \times A'$ exist.
+  Construct a function $\eval_1 : A^{A'} \times A' \rightarrow A \times A'$ as $eval_1(f,a) = (f a, a)$.
+
+  This function uniquely determines an arrow $C \rightarrow A^{A'}$ for every function $g : C \times A \rightarrow A \times A'$.
+  Let $C$ be $A \times A'$.
+  We can easily construct a function $g : (A \times A') \times A \rightarrow A \times A'$ that ignores its second argument and returns its first; therefore, we can use $\eval_1$ to uniquely determine a function $\curry{g} : A \times A' \rightarrow A^{A'}$.
+  \begin{center}
+    \begin{tikzpicture}
+      \node (1) {$A^{A'} \times A$};
+      \node [right of=1,xshift=1cm] (2) {$A \times A'$};
+      \node [below of=1,yshift=-1cm] (3) {$(A \times A') \times A$};
+
+      \draw[->] (1) -- node[above] {$\eval_1$} (2);
+      \draw[->] (3) -- node[below right] {$g$} (2);
+      \draw[->,dashed] (3) -- node[left] {$\curry{g} \times \id_A$} (1);
+    \end{tikzpicture}
+  \end{center}
+
+  With this unique $\curry{g}$, we can construct a unique map $(B^A)^{A'} \rightarrow B^{A \times A'}$ for each arrow $f \in (B^A)^{A'}$.
+  Simply compose $f \circ \curry{g}$.
+  Call this composition $k$.
+  It is one-half of our isomorphism.
+
+  Now $k$ uniquely defines a function $\eval_2 : (B^A)^{A'} \times (A \times A') \rightarrow B$.
+  From here, we use the universality of $\eval_2$ to pick out a function $\curry{g'} : B^{A \times A'} \rightarrow (B^A)^{A'}$ in the same manner we chose $\curry{g}$, above.
+  Let $g': B^{A \times A'} \times (A \times A') \rightarrow B$ be defined simply as $\eval_3(f,a) = f a$.
+  \begin{center}
+    \begin{tikzpicture}
+      \node (1) {$(B^A)^{A'} \times (A \times A')$};
+      \node [right of=1,xshift=1cm] (2) {$B$};
+      \node [below of=1,yshift=-1cm] (3) {$B^{A \times A'} \times (A \times A')$};
+
+      \draw[->] (1) -- node[above] {$\eval_2$} (2);
+      \draw[->] (3) -- node[below right] {$\eval_3$} (2);
+      \draw[->,dashed] (3) -- node[left] {$\curry{\eval_3} \times \id_{A \times A'}$} (1);
+    \end{tikzpicture}
+  \end{center}
+
+  This uniquely determines $\curry{\eval_3}$, the inverse of $k$, thus completing the desired isomorphism.
+
+  
 \item [1.10.5.6]
 \item [1.10.5.7]
 \item [1.10.5.8]
