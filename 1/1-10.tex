@@ -42,8 +42,20 @@
   \end{center}
 
 \item [1.10.5.3]
+
+\newpage
 \item [1.10.5.4]
-  To show that $\curry{\eval_{AB}} = \id_{(B^A)}$, we fill blanks in the exponent diagram.
+  To show that $\curry{\eval_{AB}} = \id_{(B^A)}$, we first consider what we know about $\eval_{AB} : B^A \rightarrow B$.
+  \begin{center}
+    \begin{tikzpicture}
+      \node (1) {$B^A \times A$};
+      \node [right of=1,xshift=1cm] (3) {$B$};
+      
+      \draw[->] (1) -- node [above] {$\eval_{AB}$} (3);
+    \end{tikzpicture}
+  \end{center}
+  
+  Assuming $B^A$ is an exponential object and that $\eval{AB}$ is the arrow associated with this exponential, we know that for any other object $C$ and arrow $g : C \times A \rightarrow B$ we have a unique mediating arrow $\curry{g} : C \rightarrow B^A$ such that the following diagram commutes.
   \begin{center}
     \begin{tikzpicture}
       \node (1) {$B^A \times A$};
@@ -51,15 +63,14 @@
       \node [right of=1,xshift=1cm] (3) {$B$};
       
       \draw[->] (2) -- node [right] {$g$} (3);
-      \draw[->] (2) -- node [left] {$\curry{g} \times \id_A$} (1);
+      \draw[->,dashed] (2) -- node [left] {$\curry{g} \times \id_A$} (1);
       \draw[->] (1) -- node [above] {$\eval_{AB}$} (3);
     \end{tikzpicture}
   \end{center}
 
-  In this case, we want to curry the eval function.
-  Hence we replace $g$ with $\eval_{AB}$.
-  This constricts the domain of $\curry{\eval_{AB}}$ to be $(B^A \times A)$, same as its codomain.
-  As $\curry{}$ is unique and shares its domain and codomain with $\id_{B^A}$, it must be the case that $\curry{\eval_{AB}} = id_{B^A}$.
+  One such possible $g$ is $\eval_{AB}$.
+  It takes an object $C = B^A$ to $B$.
+  Therefore, there must be a unique arrow $\curry{\eval_{AB}} : B^A \rightarrow B^A$ that makes the diagram commute.
   \begin{center}
     \begin{tikzpicture}
       \node (1) {$B^A \times A$};
@@ -67,11 +78,38 @@
       \node [right of=1,xshift=1cm] (3) {$B$};
       
       \draw[->] (2) -- node [right] {$\eval_{AB}$} (3);
-      \draw[->] (2) -- node [left] {$\curry{\eval_{AB}} \times \id_A$} (1);
+      \draw[->,dashed] (2) -- node [left] {$\curry{\eval_{AB}} \times \id_A$} (1);
+      \draw[->] (1) -- node [above] {$\eval_{AB}$} (3);
+    \end{tikzpicture}
+  \end{center}
+  
+  However, $\id_{B^A}$ is another unique arrow that also makes this diagram commute.
+  %% \begin{center}
+  %%   \begin{tikzpicture}
+  %%     \node (1) {$B^A \times A$};
+  %%     \node [below of=1,yshift=-1cm] (2) {$B^A \times A$};
+  %%     \node [right of=1,xshift=1cm] (3) {$B$};
+      
+  %%     \draw[->] (2) -- node [right] {$\eval_{AB}$} (3);
+  %%     \draw[->,dashed] (2) -- node [left] {$\id_{AB} \times \id_A$} (1);
+  %%     \draw[->] (1) -- node [above] {$\eval_{AB}$} (3);
+  %%   \end{tikzpicture}
+  %% \end{center}
+  %%
+  This is more clearly shown if we collapse identical nodes in the diagram.
+  \begin{center}
+    \begin{tikzpicture}
+      \node (1) {$B^A \times A$};
+      \node [right of=1,xshift=1cm] (3) {$B$};
+      
+      \draw[->,dashed] (1) edge [loop above] node [left] {$\id_{B^A} \times \id_A$} (1);
       \draw[->] (1) -- node [above] {$\eval_{AB}$} (3);
     \end{tikzpicture}
   \end{center}
 
+  Therefore $\curry{\eval_{AB}} = \id_{B^A}$.
+
+\newpage
 \item [1.10.5.5]
 \item [1.10.5.6]
 \item [1.10.5.7]
