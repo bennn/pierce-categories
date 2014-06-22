@@ -209,6 +209,25 @@
   (This seems to work.)
 
 \item [1.10.5.7]
+  If we consider $S$, the set of sentences of propositional logic, as a preorder $(S, \le)$ where $p \le q$ means ``from $p$ we can derive $q$'', then we can show that the preorder forms a cartesian closed category.
+  Objects are elements of $S$; that is, sentences of propositional logic.
+  An arrow between two objects $p$ and $q$ exists if and only if $p \le q$.
+  Composition then follows by transitivity of $\le$ and identity arrows follow from the reflexivity of $\le$.
+
+  Pierce defines the binary product $p \times q$ as the conjunction $p \wedge q$, which makes sense because given $p \wedge q$ we can derive either $p$ or $q$.
+  Likewise for a product object we can extract either $p$ or $q$ using the right projection arrow.
+  The universality property is satisfied by observing that if sentence $x$ lets us derive both $p$ and $q$ then it will allow us to derive $p \wedge q$ in propositional logic.
+  Therefore $x \le p \wedge q$ and we have the desired arrow from $x$ to $p \times q$.
+
+  For exponents, Pierce claims the sentence ``$p$ implies $q$'' should correspond to the object $q^p$.
+  To validate this claim, we first observe that $\eval$ corresponds to \emph{modus ponens}.
+  Hence $q^p \wedge p \le q$ and we have an arrow from $q^p \times p \rightarrow q$.
+  Then supposing there existed an arrow $g : r \times p \rightarrow q$ we could derive a unique arrow $\curry{g} : r \rightarrow q^p$.
+  In terms of propositional logic, assuming we have $p$ the weakest precondition for deriving $q$ is ``$q$ implies $p$''.
+  Therefore any other proposition $r$ that we can replace for $q^p$ and still derive the same conclusion must itself imply $q^p$.
+  This implies that $r \le q$, thus yielding our curry arrow.
+  
+  
 \item [1.10.5.8]
   We can extend $\fpl$ with higher-order functions by adding exponentials.
   This would make it possible to reason about all functions of a certain type, say $\emph{bool} \rightarrow \emph{int}$ in the domain or codomain of an arrow.
