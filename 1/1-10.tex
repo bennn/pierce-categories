@@ -12,6 +12,9 @@
 \newcommand{\cseta}{\mathbf{Set}^{\rightarrow}}
 \newcommand{\csetset}{\cset \times \cset}
 \newcommand{\fpl}{\mathbf{FPL}}
+\newcommand{\powset}{\mathcal{P}}
+\newcommand{\set}[1]{\{#1\}}
+
 \begin{document}
 
 \begin{enumerate}
@@ -174,7 +177,36 @@
   \end{center}
   
 \item [1.10.5.6]
-  
+  We show the category defined by the powerset of a set $S$ and the subset relation $\subseteq$ is cartesian closed by showing it has binary products and exponentials.
+
+  The binary product of two elements $A,B$ of the powerset $\powset(S)$ is the intersection of the elements.
+  This ensures that the product object is a subset of both $A$ and of $B$.
+  Moreover, it induces a unique arrow from any other object $X$ that is a subset of both $A$ and $B$ because $A \cap B$ is the largest subset of both.
+
+  Two examples are below.
+  One has an empty intersection and the other a non-empty intersection.
+  \begin{center}
+    \begin{tikzpicture}
+      \node (1) {$\set{}$};
+      \node [left of=1,xshift=-1cm] (2) {$\set{1}$};
+      \node [right of=1,xshift=1cm] (3) {$\set{2}$};
+      
+      \draw[->] (1) -- node[above] {$\subseteq$} (2);
+      \draw[->] (1) -- node[above] {$\subseteq$} (3);
+    \end{tikzpicture}
+    \begin{tikzpicture}
+      \node (1) {$\set{1,2}$};
+      \node [left of=1,xshift=-1cm] (2) {$\set{1,2}$};
+      \node [right of=1,xshift=1cm] (3) {$\set{1,2,3}$};
+      
+      \draw[->] (1) -- node[above] {$\id$} (2);
+      \draw[->] (1) -- node[above] {$\subseteq$} (3);
+    \end{tikzpicture}
+  \end{center}
+
+  The exponent of two elements $A,B$ of $\powset{S}$ can be encoded as $B$.
+  The eval function is then $\pi_1$, and $\curry{g} = g$.
+  (This seems to work.)
 
 \item [1.10.5.7]
 \item [1.10.5.8]
