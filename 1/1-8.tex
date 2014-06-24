@@ -4,6 +4,8 @@
 \usepackage{amssymb}
 \usepackage{tikz}
 
+%% PULLBACKS
+
 \begin{document}
 \begin{enumerate}
 \item [1.8.7.1]
@@ -175,65 +177,109 @@
 
 \newpage
 \item [1.8.7.2]
-  The goal is to show that if $g'$ and $f'$ constitute the pullback of arrows $g$ and $f$ where $g$ is monic, then $g'$ must be monic.
-  To complete the pullback diagram, let $i$ and $j$ be arrows from an arbitrary object $X$ to the domains of $f$ and $g$, respectively, and let $k$ be the unique arrow from $X$ to $P$.
-  
+  Goal: prove that pullbacks preserve monomorphisms.
+
+  Let the object $P$ and arrows $f' : P \rightarrow B$, $g' : P \rightarrow C$ consitute a pullback of arrows $g : B \rightarrow D$ and $f : C \rightarrow D$.
   \begin{center}
     \begin{tikzpicture}
       \node (1) {$P$};
-      \node[right of=1,xshift=1cm] (2) {};
-      \node[below of=1,yshift=-1cm] (4) {};
-      \node[right of=4,xshift=1cm] (5) {};
-      \node[right of=5,xshift=1cm] (6) {};
+      \node[right of=1,xshift=1cm] (2) {$B$};
+      \node[below of=1,yshift=-1cm] (4) {$C$};
+      \node[right of=4,xshift=1cm] (5) {$D$};
       %% Horizontal arrows
       \draw[->] (1) -- node[above]{$f'$} (2);
       \draw[->] (4) -- node[below] {$f$} (5);
       %% Vertical arrows
       \draw[->] (1) -- node[right] {$g'$} (4);
       \draw[->] (2) -- node[right] {$g$} (5);
-      %% pullback stuff
-      \node[above left of=1,xshift=-1cm,yshift=1cm] (7) {$X$};
-      \draw[dashed,->] (7) -- node[above]{$k$} (1);
-      \draw[->] (7) -- node[above]{$j$} (2);
-      \draw[->] (7) -- node[left]{$i$} (4);  
     \end{tikzpicture}
   \end{center}
-  
-  Because $g$ is monic, we know that $j; g = (k; f'); g$, therefore $j = (k; f')$.
-  Furthermore, for any other object $X'$ with an arrow $j' : X' \rightarrow B$ we have the equalities $j'; g = (k'; f'); g$, $j' = k'; f'$, and $k'; f' = k; f'$.
-  (We elide the arrow $i'$ from $X$ to the codomain of $g'$ to keep the diagram simpler.)
-  Via this last equality, we see that $k' = k$.
+  Furthermore, let $f$ be monic.
+  Thus for any arrows $x : A \rightarrow C$ and $y : A \rightarrow C$ we have that $f \circ x = f \circ y$ implies $x = y$.
+  \begin{center}
+    \begin{tikzpicture}
+      \node (1) {$C$};
+      \node [right of=1,xshift=1cm] (2) {$D$};
+      \node [left of=1,xshift=-1cm] (3) {$X$};
 
+      \draw[->] (3) edge[bend left] node[above] {$x$} (1);
+      \draw[->] (3) edge[bend right] node[below] {$y$} (1);
+      \draw[->] (1) -- node[above] {$f$} (2);
+    \end{tikzpicture}
+  \end{center}
+  We want to show that $f'$ is monic; that is, for any arrows $x : A \rightarrow P$, $y : A \rightarrow P$, a proof that $f' \circ x = f' \circ y$ implies $x = y$.
   \begin{center}
     \begin{tikzpicture}
       \node (1) {$P$};
-      \node[right of=1,xshift=1cm] (2) {};
-      \node[below of=1,yshift=-1cm] (4) {};
-      \node[right of=4,xshift=1cm] (5) {};
-      \node[right of=5,xshift=1cm] (6) {};
-      %% Horizontal arrows
-      \draw[->] (1) -- node[above]{$f'$} (2);
-      \draw[->] (4) -- node[below] {$f$} (5);
-      %% Vertical arrows
-      \draw[->] (1) -- node[right] {$g'$} (4);
-      \draw[->] (2) -- node[right] {$g$} (5);
-      %% pullback stuff
-      \node[above left of=1,xshift=-1cm,yshift=1cm] (7) {$X$};
-      \draw[dashed,->] (7) -- node[above]{$k$} (1);
-      \draw[->] (7) -- node[above]{$k; f'$} (2);
-      \draw[->] (7) -- node[left]{$i$} (4);
-      %% second pullback
-      \node[above left of=2,xshift=2cm,yshift=1cm] (8) {$X'$};
-      \draw[dashed,->] (8) -- node[above]{$k'$} (1);
-      \draw[->] (8) -- node[above]{$j'$} (2);
-      %% \draw[->] (8) -- node[left]{$i'$} (4);
+      \node [right of=1,xshift=1cm] (2) {$B$};
+      \node [left of=1,xshift=-1cm] (3) {$X$};
+
+      \draw[->] (3) edge[bend left] node[above] {$x$} (1);
+      \draw[->] (3) edge[bend right] node[below] {$y$} (1);
+      \draw[->] (1) -- node[above] {$f'$} (2);
     \end{tikzpicture}
   \end{center}
+  Assume that $f' \circ x = f' \circ y$.
+  Because we have the function $g : B \rightarrow D$ we have two equal arrows from $X$ to $D$.
+  \begin{center}
+    \begin{tikzpicture}
+      \node (1) {$X$};
+      \node [right of=1,xshift=2cm] (2) {$B$};
+      \node [below of=2,yshift=-1cm] (3) {$D$};
 
-  Thus the unique arrows to $P$ are the same.
-  That is, for any object $X$ that has arrows to the codomains of $f'$ and $g'$ that make the pullback diagram commute, the unique arrow $k : X \rightarrow P$ is the same invariant of $X$.
-  Clearly, there must be only one $X$ and only one $k$.
-  It then follows trivially that $g'$ is a monomorphism; there is only one arrow ($k$) satisfying the equation $a; g = b; g$.
+      \draw[->] (1) -- node[above] {$f' \circ x = f' \circ y$} (2);
+      \draw[->] (2) -- node[right] {$g$} (3);
+    \end{tikzpicture}
+  \end{center}
+  Because $g'$ is a pullback of $g$ along $f$ and because $x$ and $y$ share the pullback object $P$ as their codomain, we see that $f \circ g' \circ x$ and $f \circ g' \circ y$ are also arrows from $X$ to $D$ that make the diagram commute.
+  \begin{center}
+    \hfill{}
+    \begin{tikzpicture}
+      \node (1) {$X$};
+      \node [below of=1,yshift=-1cm] (2) {$C$};
+      \node [right of=2,xshift=2cm] (3) {$D$};
+      \node [right of=1,xshift=2cm] (4) {$B$};
+
+      \draw[->] (1) -- node[left] {$g' \circ x$} (2);
+      \draw[->] (2) -- node[above] {$f$} (3);
+      \draw[->] (1) -- node[above] {$f' \circ x = f' \circ y$} (4);
+      \draw[->] (4) -- node[right] {$g$} (3);
+    \end{tikzpicture}
+    \hspace{1cm}
+    \begin{tikzpicture}
+      \node (1) {$X$};
+      \node [below of=1,yshift=-1cm] (2) {$C$};
+      \node [right of=2,xshift=2cm] (3) {$D$};
+      \node [right of=1,xshift=2cm] (4) {$B$};
+
+      \draw[->] (1) -- node[left] {$g' \circ y$} (2);
+      \draw[->] (2) -- node[above] {$f$} (3);
+      \draw[->] (1) -- node[above] {$f' \circ x = f' \circ y$} (4);
+      \draw[->] (4) -- node[right] {$g$} (3);
+    \end{tikzpicture}
+    \hfill{}
+  \end{center}
+  Furthermore, because $f$ is monic, we know that since $f \circ g' \circ x = f \circ g' \circ y$ we have that $g' \circ x = g' \circ y$.
+  Finally the universal property of $P$ guarantees a unique arrow $k$ between $X$ and $P$.
+  \begin{center}
+    \begin{tikzpicture}
+      \node (1) {$P$};
+      \node [below of=1,yshift=-1cm] (2) {$C$};
+      \node [right of=2,xshift=2cm] (3) {$D$};
+      \node [right of=1,xshift=2cm] (4) {$B$};
+      \node [above left of=1,xshift=-2cm,yshift=1cm] (5) {$X$};
+
+      \draw[->] (5) -- node[left] {$g' \circ x = g' \circ y$} (2);
+      \draw[->] (2) -- node[above] {$f$} (3);
+      \draw[->] (5) -- node[above right] {$f' \circ x = f' \circ y$} (4);
+      \draw[->] (4) -- node[right] {$g$} (3);
+      \draw[->] (1) -- node[left] {$f'$} (2);
+      \draw[->] (1) -- node[below] {$g'$} (4);
+      \draw[->,dashed] (5) -- node[below left] {$k$} (1);
+    \end{tikzpicture}
+  \end{center}
+  The commutativity conditions of the pullback show that both $x = k$ and $y = k$.
+  Thus by transitivity, $x = y$.
 
 \newpage
 \item [1.8.7.3]
