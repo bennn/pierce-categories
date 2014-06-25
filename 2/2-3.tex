@@ -13,6 +13,7 @@
 \newcommand{\eval}{\emph{eval}}
 \newcommand{\curry}{\emph{curry}}
 \newcommand{\natarrow}{\dot{\rightarrow}}
+\newcommand{\fhom}{\mathbf{hom}}
 
 \newcommand{\pcat}{\mathbf{P}}
 
@@ -91,6 +92,26 @@
 
 \item[]
 \item [2.3.11.3]
+  The identity functor $I_\cset : \cset \rightarrow \cset$ is represented by any singleton set because a singleton set is an initial object in the category $\cset$.
+  Let $R$ stand for an arbitrary singleton set and consider the functors $I_\cset$ and $\fhom(R,-)$, the identity functor on $\cset$ and the hom-functor defined by the singleton $R$.
+  These functors define the following arrows for each $\cset$-arrow $f : A \rightarrow B$.
+  \begin{center}
+    \begin{tikzpicture}
+      \node (1) {$I_\cset(A)$};
+      \node[right of=1,xshift=2cm] (2) {$\fhom(R,A)$};
+      \node[below of=1,yshift=-1cm] (3) {$I_\cset(B)$};
+      \node[below of=2,yshift=-1cm] (4) {$\fhom(R,B)$};
+
+      \draw[->] (1) -- node[left] {$I_\cset(f)$} (3);
+      \draw[->] (2) -- node[right] {$\fhom(R,f) : \fhom(R,A) \rightarrow \fhom(R,B)$} (4);
+    \end{tikzpicture}
+  \end{center}
+  
+  Because $R$ is a singleton, there exists one unique arrow in each hom-set $\hom(R,A)$.
+  Furthermore, there is one hom-set for each $\cset$-object $A$, therefore we have an isomorphism between $\cset$ objects and the unique arrows to these objects from the singleton $R$.
+  This natural isomorphism proves that $I_\cset$ is represented by the singleton set $R$.
+
+\newpage
 \item [2.3.11.4]
 \item [2.3.11.5]
 \end{enumerate}
