@@ -14,6 +14,7 @@
 \newcommand{\curry}{\emph{curry}}
 \newcommand{\natarrow}{\dot{\rightarrow}}
 \newcommand{\fhom}{\mathbf{hom}}
+\newcommand{\fpl}{\mathbf{FPL}}
 
 \newcommand{\pcat}{\mathbf{P}}
 
@@ -113,6 +114,9 @@
 
 \newpage
 \item [2.3.11.4]
-\item [2.3.11.5]
+\item[]
+\item [2.3.11.5] To extend $\fpl$ with lists and polymorphic functions on lists, we would need to create an endofunctor $F : \fpl \rightarrow \fpl$ that constructed lists from $\fpl$ objects.
+  Then the polymorphic functions would be natural transformations between $F$ and $F$.
+
 \end{enumerate}
 \end{document}
