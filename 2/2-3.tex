@@ -6,15 +6,53 @@
 
 \newcommand{\diag}{\Delta}
 \newcommand{\ccat}{\mathbf{C}}
-\newcommand{\id}{\mathbf{id}}
+\newcommand{\id}{\emph{id}}
 \newcommand{\pow}{\mathcal{P}}
 \newcommand{\fpow}{\mathbf{\mathcal{P}}}
 \newcommand{\cset}{\mathbf{Set}}
+\newcommand{\eval}{\emph{eval}}
+\newcommand{\curry}{\emph{curry}}
+\newcommand{\natarrow}{\dot{\rightarrow}}
 
 \begin{document}
 
 \begin{enumerate}
 \item [2.3.11.1]
+  The diagram from Pierce's example 2.3.4 argued that $\eval : F_A \natarrow I_\cset$ was a natural transformation.
+  Proof follows if the following diagram commutes for a fixed set $A$ and every arrow $g : C \rightarrow B$.
+  \begin{center}
+    \begin{tikzpicture}
+      \node (1) {$F_A(C) = C^A \times A$};
+      \node[right of=1,xshift=3cm] (2) {$C = I_\cset(C)$};
+      \node[below of=1,yshift=-1cm] (3) {$F_A(B) = B^A \times A$};
+      \node[below of=2,yshift=-1cm] (4) {$B = I_\cset(B)$};
+
+      \draw[->] (1) -- node[above] {$\eval_{AC}$} (2);
+      \draw[->] (2) -- node[right] {$g = I_\cset(g)$} (4);
+      \draw[->] (1) -- node[left] {$F_A(g) = (g \circ -) \times \id_A$} (3);
+      \draw[->] (3) -- node[above] {$\eval_{AB}$} (4);
+    \end{tikzpicture}
+  \end{center}
+  We need to show that $g \circ \eval_{AC} = \eval_{AB} \circ (g\circ -) \times \id_A$, and we can prove this by using the universal property of $\eval_{AB}$.
+  
+  The exponential object $B^A$ and arrow $\eval_{AB}$ guarantee that for every arrow $h : C^A \times A \rightarrow B$, we can derive an arrow $C^A \times A \rightarrow B^A \times A$ by currying $h$.
+  Take $h = g \circ \eval_{AC} : C^A \times A \rightarrow B$.
+  We see that the following diagram commutes.
+  \begin{center}
+    \begin{tikzpicture}
+      \node (1) {$B^A \times A$};
+      \node[right of=1,xshift=2cm] (2) {$B$};
+      \node[below of=1,yshift=-1cm] (3) {$C^A \times A$};
+      
+      \draw[->] (1) -- node[above] {$\eval_{AB}$} (2);
+      \draw[->] (3) -- node[below right] {$g \circ \eval_{AB}$} (2);
+      \draw[->,dashed] (3) -- node[left] {$\curry(g \circ \eval_{AC}) \times \id_A$} (1);
+    \end{tikzpicture}
+  \end{center}
+  Filling in the blank above in the arrow $F_A(g) = (g \circ -) \times \id_A$, we see that $(g \circ -) = (g \circ \eval_{AC})$.
+  Therefore the diagram from example 2.3.4 commutes, proving that $\eval : F_A \natarrow I_\cset$ is a natural transformation.
+\newpage
+
 \item [2.3.11.2]
 \item [2.3.11.3]
 \item [2.3.11.4]
