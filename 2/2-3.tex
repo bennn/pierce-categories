@@ -1,6 +1,7 @@
 \documentclass{article}
 
 \usepackage{amsmath}
+\usepackage{amssymb}
 \usepackage{palatino}
 \usepackage{tikz}
 
@@ -9,12 +10,14 @@
 \newcommand{\id}{\emph{id}}
 \newcommand{\pow}{\mathcal{P}}
 \newcommand{\fpow}{\mathbf{\mathcal{P}}}
+\newcommand{\cmon}{\mathbf{Mon}}
 \newcommand{\cset}{\mathbf{Set}}
 \newcommand{\eval}{\emph{eval}}
 \newcommand{\curry}{\emph{curry}}
 \newcommand{\natarrow}{\dot{\rightarrow}}
 \newcommand{\fhom}{\mathbf{hom}}
 \newcommand{\fpl}{\mathbf{FPL}}
+\newcommand{\nat}{\mathbb{N}}
 
 \newcommand{\pcat}{\mathbf{P}}
 
@@ -114,6 +117,19 @@
 
 \newpage
 \item [2.3.11.4]
+  Not sure exactly how the forgetful functor $U : \cmon \rightarrow \cset$ is represented by the monoid $R = (\nat,+,0)$, but it's important that $R$ is a free monoid.
+  
+  A free monoid (in abstract algebra) is a monoid whose elements are strings.
+  Multiplication is string concatenation and the identity is the empty string.
+  The monoid $(\nat, +, 0)$ fits this description if we consider numbers as iterated applications of the successor function.
+  Then the number $1$ is equally $1 + 0 = 0 + 1 = 1$, because $0$ is the additive identity, and $4$ would be represented as $1 + 1 + 1 + 1$.
+  Thus we can view a number as a string, $+$ as string concatenation, and $0$ as the empty string.
+
+  Because $R$ is free, we know there exists a unique arrow from it to any other monoid in $\cmon$.
+  So any monoids $A,B$ are uniquely represented by their image in the hom-functor $\fhom(R,-)$.
+  
+  There should be an isomorphism between the underlying set of $A$ to the arrow from $R$ to $A$, but I'm not sure what it is.
+  
 \item[]
 \item [2.3.11.5] To extend $\fpl$ with lists and polymorphic functions on lists, we would need to create an endofunctor $F : \fpl \rightarrow \fpl$ that constructed lists from $\fpl$ objects.
   Then the polymorphic functions would be natural transformations between $F$ and $F$.
