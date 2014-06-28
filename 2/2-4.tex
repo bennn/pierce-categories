@@ -133,7 +133,33 @@
 \subitem  
   The existence and uniqueness of the arrow $g^*$ follows by the existence and uniqueness of the identity arrow $\id_*$ in the category $\one$.
 
+\vfill{}
 \item[2.4.12.2]
+  The categorical coproduct is the left adjoint to the diagonal functor $\diagfun$.
+  The unit of the adjunction carries a $\cat$-object to its product and the counit of the adjuction collapses the identity coproduct into a $\cat$-object.
+  \begin{center}
+      \begin{tikzpicture}
+        \node (1) {$C$};
+        \node [right of=1, xshift=2cm] (2) {$C \times C$};
+        \node [below of=2, yshift=-1cm] (3) {$A \times B$};
+        
+        \draw[->] (1) -- node [above] {$\langle \id_C , \id_C \rangle$} (2);
+        \draw[->] (1) -- node[below left] {$\langle f, g \rangle$} (3);
+        \draw[->] (2) -- node [right] {$f \times g$} (3);
+      \end{tikzpicture}
+      \hspace{1cm}
+      \begin{tikzpicture}
+        \node (1) {$Y + Y$};
+        \node [below of=1, yshift=-1cm] (2) {$X + X$};
+        \node [right of=1, xshift=2cm] (3) {$Y$};
+        \draw[->] (2) -- node [left] {$[\langle f, f \rangle, \langle f, f \rangle]$} (1);
+        \draw[->] (1) -- node[above] {$[\id_Y , \id_Y]$} (3);
+        \draw[->] (2) -- node [below right] {$[g,g]$} (3);
+      \end{tikzpicture}
+  \end{center}
+
+\vfill{}
+\newpage
 \item[2.4.12.3]
 \item[2.4.12.4]
 \item[2.4.12.5]
