@@ -205,9 +205,15 @@
     \end{tikzpicture}
   \end{center}
 
-  The exponent of two elements $A,B$ of $\powset{S}$ can be encoded as $B$.
-  The eval function is then $\pi_1$, and $\curry{g} = g$.
-  (This seems to work.)
+  The exponent of two elements $A,B$ of $\powset{S}$ can be encoded as $B$ if $B \subseteq A$, otherwise it must be $S$.
+  I suspect there is a cleaner way to convey this, but the obvious formula $\neg A \cup B$ and similar variants fail.
+  
+  If $B \subseteq A$, then $B^A \subseteq B$ must hold.
+  We choose $B^A = B$ because it is the largest set for which the equality is true.
+  This, combined with the fact that our category is thin, gives $B^A$ the desired universal property.
+  
+  However if $A \subseteq B$, then for any object $C$, the unique arrow $f : A \rightarrow B$ composed with $\pi_2$ gives a map from the product $C \times A$ to $B$.
+  Therefore $C$ can be any object in the set and therefore $B$ must be the set $S$ for the universal property to hold.
 
 \vfill{}
 \item [1.10.5.7]
