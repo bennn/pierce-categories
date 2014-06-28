@@ -88,15 +88,51 @@
   \end{center}
   For $A \times B$ to match the definition of a product object it needs a unique arrow from any other object $X$ in $\cat$ that has arrows $f : X \rightarrow A$ and $g : X \rightarrow B$ and projection arrows to both $A$ and $B$.
 
+\subitem
   First, the unique arrow from an arbitrary object arises from the arrow $f^{\#}$ in the unit diagram.
   For an object $C$ with arrows $f_1$ and $f_2$ taking it to $A$ and to $B$, respectively, the arrow $f^{\#}$ is uniquely determined to take the pair of objects $(C, C)$ to the pair of objects $(A,B)$.
   When mapped by the product functor, this gives the unique arrow into the product object $A \times B$.
 
+\subitem
   The projection arrows follow from the counit diagram because the counit $\varepsilon$ carries a pair formed from the product object $A \times B$ (that is, $(A \times B), (A \times B)$) to the pair of $A$ and $B$.
   Therefore $\varepsilon$ must be the pair of arrows $(\pi_1, \pi_2)$.
 
 \newpage
 \item[2.4.12.1] %% dualize the initial objects to get terminal objects
+  Exercise \textbf{2.4.5} showed how an initial object in a category $\cat$ arises as the image of the unique object $*$ of the category $\one$ under a left adjoint to the constant functor $T : \cat \rightarrow \one$.
+  
+  Dually, a final object 1 in a category $\cat$ arises as the \emph{preimage} of the unique object $*$ of the category $\one$ under a \emph{right} adjoint to the constant functor $T$.
+  The unit picks out the unique $\cat$-arrow from any $\cat$-object to the final object, 1, and the counit is fixed as $I_\one \rightarrow I_\one$.
+  
+  The unit and counit diagrams are below.
+  The functor $G : \one \rightarrow \cat$ maps the object $*$ to the final object $1$ in $\cat$.
+  \begin{center}
+      \begin{tikzpicture}
+        \node (1) {$*$};
+        \node [right of=1, xshift=1cm] (2) {$G(T(*))$};
+        \node [below of=2, yshift=-1cm] (3) {$G(y)$};
+        
+        \draw[->] (1) -- node [above] {$\eta$} (2);
+        \draw[->] (1) -- node[below left] {$f$} (3);
+        \draw[->] (2) -- node [right] {$G~f^{\#}$} (3);
+      \end{tikzpicture}
+      \hspace{2cm}
+      \begin{tikzpicture}
+        \node (1) {$T~F~y$};
+        \node [below of=1, yshift=-1cm] (2) {$T~*$};
+        \node [right of=1, xshift=1cm] (3) {$y$};
+        \draw[->] (2) -- node [left] {$T~g^*$} (1);
+        \draw[->] (1) -- node[above] {$\iota$} (3);
+        \draw[->] (2) -- node [below right] {$g$} (3);
+      \end{tikzpicture}
+  \end{center}
+
+  The existence and uniqueness of the arrow $f^{\#}$ follows because $1$ is a final object in $\cat$.
+  Hence there exists a unique arrow for each $C \in \cat$ mapping $C$ to $1$.
+
+\subitem  
+  The existence and uniqueness of the arrow $g^*$ follows by the existence and uniqueness of the identity arrow $\id_*$ in the category $\one$.
+
 \item[2.4.12.2]
 \item[2.4.12.3]
 \item[2.4.12.4]
