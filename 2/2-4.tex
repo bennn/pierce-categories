@@ -2,6 +2,7 @@
 %% Chapter 2 Section 4: Adjoints
 
 \usepackage{amsmath}
+\usepackage{amssymb}
 \usepackage{palatino}
 \usepackage{tikz}
 
@@ -10,6 +11,14 @@
 \newcommand{\id}{\mathbf{id}}
 \newcommand{\pifun}{\mathbf{\Pi}}
 \newcommand{\diagfun}{\mathbf{\Delta}}
+
+\newcommand{\eval}{\emph{eval}}
+\newcommand{\curry}{\emph{\curry}}
+
+\newcommand{\ints}{\mathbb{Z}}
+\newcommand{\reals}{\mathbb{R}}
+\newcommand{\ceil}[1]{\lceil #1 \rceil}
+\newcommand{\floor}[1]{\lfloor #1 \rfloor}
 
 \begin{document}
 
@@ -161,7 +170,54 @@
 \vfill{}
 \newpage
 \item[2.4.12.3]
+  Example \textbf{2.4.8} showed that $\eval_{AB}$ was the counit of the adjunction between the functors $F = (- \times A)$ and $G = (-)^A \times A$.
+  The counit diagram Pierce gave was the diagram for an exponential object $B^A$.
+  %% \begin{center}
+  %%     \begin{tikzpicture}
+  %%       \node (1) {$B^A \times A$};
+  %%       \node [below of=1, yshift=-1cm] (2) {$C \times A$};
+  %%       \node [right of=1, xshift=2cm] (3) {$B$};
+  %%       \draw[->] (2) -- node [left] {$g$} (1);
+  %%       \draw[->] (1) -- node[above] {$\eval_{AB}$} (3);
+  %%       \draw[->] (2) -- node [below right] {$\curry(g) \times \id_A$} (3);
+  %%     \end{tikzpicture}
+  %% \end{center}
+
+\subitem
+  The unit of this adjunction is the class of arrows that take a fixed $\cat$-object $C$ to the pair of a $\cat$-object $A$ and $\cat$-arrows from $A$ to $C$.
+  The mapping from $f$ to $f^{\#}$ is the process of uncurrying a function $f : C \rightarrow A \rightarrow B$ into a function $f^{\#} : C \times A \rightarrow B$.
+  \begin{center}
+      \begin{tikzpicture}
+        \node (1) {$C$};
+        \node [right of=1, xshift=2cm] (2) {$C^A \times A$};
+        \node [below of=2, yshift=-1cm] (3) {$B^A \times A$};
+        
+        \draw[->] (1) -- node [above] {$\eta$} (2);
+        \draw[->] (1) -- node[below left] {$f$} (3);
+        \draw[->] (2) -- node [right] {$(f^{\#})^A \times A$} (3);
+      \end{tikzpicture}
+  \end{center}
+
+\vfill{}
 \item[2.4.12.4]
+  Just as the ceiling functor $\ceil{} : \ints \rightarrow \reals$ is the left adjoint of the inclusion functor $U : \ints \rightarrow \reals$, we can show that the floor functor $\floor{} : \reals \rightarrow \ints$ is the right adjoint to the inclusion $U$.
+  The unit of the adjunction represents the fact that for all integers $N$, the inequality $N \le \floor{U(N)}$ holds.
+  \begin{center}
+    \begin{tikzpicture}
+      \node (1) {$N$};
+      \node [right of=1, xshift=2cm] (2) {$\floor{U(N)}$};
+      \node [below of=2, yshift=-1cm] (3) {$\floor{M}$};
+      
+      \draw[->] (1) -- node [above] {$\eta$} (2);
+      \draw[->] (1) -- node[below left] {$f$} (3);
+      \draw[->] (2) -- node [right] {$\floor{f^{\#}}$} (3);
+    \end{tikzpicture}
+  \end{center}
+  Here, the function $f$ is any map between integers.
+  The unique $f^*$ arises from the definition of the floor function: namely that the floor of a real number $r$ is the \emph{greatest} integer less than $r$.
+
+\vfill{}
+\newpage
 \item[2.4.12.5]
 \end{enumerate}
 \end{document}
