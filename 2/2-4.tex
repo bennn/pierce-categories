@@ -57,11 +57,11 @@
         \node [below of=1, yshift=-1cm] (2) {$F~*$};
         \node [right of=1, xshift=1cm] (3) {$y$};
         \draw[->] (2) -- node [left] {$F~g^*$} (1);
-        \draw[->] (1) -- node[above] {$\varepsilon$} (3);
+        \draw[->] (1) -- node[above] {$\epsilon$} (3);
         \draw[->] (2) -- node [below right] {$g$} (3);
       \end{tikzpicture}
     \end{center}
-    We have that for each $y \in \ccat$ the counit $\varepsilon$ picks out the unique arrow from the initial object $F~*$ to $y$.
+    We have that for each $y \in \ccat$ the counit $\epsilon$ picks out the unique arrow from the initial object $F~*$ to $y$.
     Existence and uniqueness follow because $F*$ is an initial object in $\ccat$.
   \end{description}
   \vfill{}
@@ -94,7 +94,7 @@
       
       \draw[->] (2) -- node[left] {$\diagfun~g^*$} (1);
       \draw[->] (2) -- node[below right] {$(g_1, g_2)$} (3);
-      \draw[->] (1) -- node[above] {$\varepsilon$} (3);
+      \draw[->] (1) -- node[above] {$\epsilon$} (3);
     \end{tikzpicture}
   \end{center}
   For $A \times B$ to match the definition of a product object it needs a unique arrow from any other object $X$ in $\ccat$ that has arrows $f : X \rightarrow A$ and $g : X \rightarrow B$ and projection arrows to both $A$ and $B$.
@@ -105,8 +105,8 @@
   When mapped by the product functor, this gives the unique arrow into the product object $A \times B$.
 
 \subitem
-  The projection arrows follow from the counit diagram because the counit $\varepsilon$ carries a pair formed from the product object $A \times B$ (that is, $(A \times B), (A \times B)$) to the pair of $A$ and $B$.
-  Therefore $\varepsilon$ must be the pair of arrows $(\pi_1, \pi_2)$.
+  The projection arrows follow from the counit diagram because the counit $\epsilon$ carries a pair formed from the product object $A \times B$ (that is, $(A \times B), (A \times B)$) to the pair of $A$ and $B$.
+  Therefore $\epsilon$ must be the pair of arrows $(\pi_1, \pi_2)$.
 
 \newpage
 \item[2.4.12.1] %% dualize the initial objects to get terminal objects
@@ -233,7 +233,7 @@
 %%     }
 %%   \end{mathpar}
 
-  Assume first the we have $\eta : X \rightarrow G(F(X))$, the unit of the adjunction, and want to derive the counit $\varepsilon$.
+  Assume first the we have $\eta : X \rightarrow G(F(X))$, the unit of the adjunction, and want to derive the counit $\epsilon$.
   Diagramatically, the unit gives the following picture.
   \begin{center}
       \begin{tikzpicture}
@@ -263,8 +263,11 @@
   The unit $\eta$ uniquely determines an arrow $f^{\#} : F(G(Y)) \rightarrow Y$.
   This is the counit of the adjunction. %% TODO needs proving
 
-  Conversely, if we assume we have the counit $\varepsilon : F(G(Y)) \rightarrow Y$ then by fixing $Y = F(X)$ we uniquely determine $g*$ as the unit of the adjunction.
+  Conversely, if we assume we have the counit $\epsilon : F(G(Y)) \rightarrow Y$ then by fixing $Y = F(X)$ we uniquely determine $g*$ as the unit of the adjunction.
   In the corresponding diagram, $g$ is the identity on $F(X)$ and $g^*$ is uniquely determined by the counit.
+
+  Next we show that the functors F and G determine one another to within a natural isomorphism.
+  
 
 \end{enumerate}
 \end{document}
