@@ -7,7 +7,8 @@
 \usepackage{tikz}
 
 \newcommand{\one}{\mathbf{1}}
-\newcommand{\cat}{\mathbf{C}}
+\newcommand{\ccat}{\mathbf{C}}
+\newcommand{\dcat}{\mathbf{D}}
 \newcommand{\id}{\mathbf{id}}
 \newcommand{\pifun}{\mathbf{\Pi}}
 \newcommand{\diagfun}{\mathbf{\Delta}}
@@ -26,8 +27,8 @@
 \item [2.4.5]
   \begin{description}
   \item [Unit:]
-    The unit diagram operates on the distinguished object $*$ of the category $\one$ and arbitrary objects $y$ of the category $\cat$.
-    Like Pierce said, the functor $F : \one \rightarrow \cat$ is the left adjoint of the constant functor $T : \cat \rightarrow \one$.
+    The unit diagram operates on the distinguished object $*$ of the category $\one$ and arbitrary objects $y$ of the category $\ccat$.
+    Like Pierce said, the functor $F : \one \rightarrow \ccat$ is the left adjoint of the constant functor $T : \ccat \rightarrow \one$.
     Additionally the unit $\iota : \id_\one \rightarrow \id_\one$ is fixed.
     \begin{center}
       \begin{tikzpicture}
@@ -40,8 +41,8 @@
         \draw[->] (2) -- node [right] {$T~f^{\#}$} (3);
       \end{tikzpicture}
     \end{center}
-    For each object of $\one$, each object of $\cat$, and each $\one$-arrow $f: X \rightarrow T(y)$ there is a unique $\cat$ arrow $f^{\#} : F(*) \rightarrow y$.
-    Because there is only one object in the category $\one$, we have that for each object in $\cat$ there is a unique arrow $f^{\#}$ taking the image of $*$ to this object $y$.
+    For each object of $\one$, each object of $\ccat$, and each $\one$-arrow $f: X \rightarrow T(y)$ there is a unique $\ccat$ arrow $f^{\#} : F(*) \rightarrow y$.
+    Because there is only one object in the category $\one$, we have that for each object in $\ccat$ there is a unique arrow $f^{\#}$ taking the image of $*$ to this object $y$.
     Thus the image of $*$ must be an initial object.
 
     Existence and uniqueness follow from the existence and uniqueness of $f = \id_*$ in the category $\one$.
@@ -59,13 +60,13 @@
         \draw[->] (2) -- node [below right] {$g$} (3);
       \end{tikzpicture}
     \end{center}
-    We have that for each $y \in \cat$ the counit $\varepsilon$ picks out the unique arrow from the initial object $F~*$ to $y$.
-    Existence and uniqueness follow because $F*$ is an initial object in $\cat$.
+    We have that for each $y \in \ccat$ the counit $\varepsilon$ picks out the unique arrow from the initial object $F~*$ to $y$.
+    Existence and uniqueness follow because $F*$ is an initial object in $\ccat$.
   \end{description}
   \vfill{}
 \newpage
 \item[2.4.7]
-  We have a category $\cat$ with products, a product functor $\pifun : \cat \rightarrow \cat \times \cat$ and a diagonal functor $\diagfun : \cat \times \cat \rightarrow \cat$.
+  We have a category $\ccat$ with products, a product functor $\pifun : \ccat \rightarrow \ccat \times \ccat$ and a diagonal functor $\diagfun : \ccat \times \ccat \rightarrow \ccat$.
   The diagram for the unit is:
   \begin{center}
     \begin{tikzpicture}
@@ -78,10 +79,10 @@
       \draw[->] (2) -- node[right] {$f_1 \times f_2$} (3);
     \end{tikzpicture}
   \end{center}
-  Here $C \times C$ is an object in $\cat \times \cat$.
-  Specifically it's the product of the $\cat$-object $C$ with itself.
-  The object $A \times B$ is also in $\cat \times \cat$.
-  The arrow $f_1 \times f_2$ is just $\langle f_1, f_2 \rangle$ lifted into the category $\cat \times \cat$.
+  Here $C \times C$ is an object in $\ccat \times \ccat$.
+  Specifically it's the product of the $\ccat$-object $C$ with itself.
+  The object $A \times B$ is also in $\ccat \times \ccat$.
+  The arrow $f_1 \times f_2$ is just $\langle f_1, f_2 \rangle$ lifted into the category $\ccat \times \ccat$.
 
   The diagram for the counit is:
   \begin{center}
@@ -95,7 +96,7 @@
       \draw[->] (1) -- node[above] {$\varepsilon$} (3);
     \end{tikzpicture}
   \end{center}
-  For $A \times B$ to match the definition of a product object it needs a unique arrow from any other object $X$ in $\cat$ that has arrows $f : X \rightarrow A$ and $g : X \rightarrow B$ and projection arrows to both $A$ and $B$.
+  For $A \times B$ to match the definition of a product object it needs a unique arrow from any other object $X$ in $\ccat$ that has arrows $f : X \rightarrow A$ and $g : X \rightarrow B$ and projection arrows to both $A$ and $B$.
 
 \subitem
   First, the unique arrow from an arbitrary object arises from the arrow $f^{\#}$ in the unit diagram.
@@ -108,13 +109,13 @@
 
 \newpage
 \item[2.4.12.1] %% dualize the initial objects to get terminal objects
-  Exercise \textbf{2.4.5} showed how an initial object in a category $\cat$ arises as the image of the unique object $*$ of the category $\one$ under a left adjoint to the constant functor $T : \cat \rightarrow \one$.
+  Exercise \textbf{2.4.5} showed how an initial object in a category $\ccat$ arises as the image of the unique object $*$ of the category $\one$ under a left adjoint to the constant functor $T : \ccat \rightarrow \one$.
   
-  Dually, a final object 1 in a category $\cat$ arises as the \emph{preimage} of the unique object $*$ of the category $\one$ under a \emph{right} adjoint to the constant functor $T$.
-  The unit picks out the unique $\cat$-arrow from any $\cat$-object to the final object, 1, and the counit is fixed as $I_\one \rightarrow I_\one$.
+  Dually, a final object 1 in a category $\ccat$ arises as the \emph{preimage} of the unique object $*$ of the category $\one$ under a \emph{right} adjoint to the constant functor $T$.
+  The unit picks out the unique $\ccat$-arrow from any $\ccat$-object to the final object, 1, and the counit is fixed as $I_\one \rightarrow I_\one$.
   
   The unit and counit diagrams are below.
-  The functor $G : \one \rightarrow \cat$ maps the object $*$ to the final object $1$ in $\cat$.
+  The functor $G : \one \rightarrow \ccat$ maps the object $*$ to the final object $1$ in $\ccat$.
   \begin{center}
       \begin{tikzpicture}
         \node (1) {$*$};
@@ -136,8 +137,8 @@
       \end{tikzpicture}
   \end{center}
 
-  The existence and uniqueness of the arrow $f^{\#}$ follows because $1$ is a final object in $\cat$.
-  Hence there exists a unique arrow for each $C \in \cat$ mapping $C$ to $1$.
+  The existence and uniqueness of the arrow $f^{\#}$ follows because $1$ is a final object in $\ccat$.
+  Hence there exists a unique arrow for each $C \in \ccat$ mapping $C$ to $1$.
 
 \subitem  
   The existence and uniqueness of the arrow $g^*$ follows by the existence and uniqueness of the identity arrow $\id_*$ in the category $\one$.
@@ -145,7 +146,7 @@
 \vfill{}
 \item[2.4.12.2]
   The categorical coproduct is the left adjoint to the diagonal functor $\diagfun$.
-  The unit of the adjunction carries a $\cat$-object to its product and the counit of the adjuction collapses the identity coproduct into a $\cat$-object.
+  The unit of the adjunction carries a $\ccat$-object to its product and the counit of the adjuction collapses the identity coproduct into a $\ccat$-object.
   \begin{center}
       \begin{tikzpicture}
         \node (1) {$C$};
@@ -184,7 +185,7 @@
   %% \end{center}
 
 \subitem
-  The unit of this adjunction is the class of arrows that take a fixed $\cat$-object $C$ to the pair of a $\cat$-object $A$ and $\cat$-arrows from $A$ to $C$.
+  The unit of this adjunction is the class of arrows that take a fixed $\ccat$-object $C$ to the pair of a $\ccat$-object $A$ and $\ccat$-arrows from $A$ to $C$.
   The mapping from $f$ to $f^{\#}$ is the process of uncurrying a function $f : C \rightarrow A \rightarrow B$ into a function $f^{\#} : C \times A \rightarrow B$.
   \begin{center}
       \begin{tikzpicture}
