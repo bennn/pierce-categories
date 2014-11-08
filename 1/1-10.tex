@@ -9,11 +9,67 @@
 \begin{enumerate}
 \item [1.10.5.1]
   %% TODO
-  An example of a small, finite category with binary products and a terminal object but no exponentials is \ldots
+  An example of a small, finite category with binary products and a terminal object but no exponentials is:
 
-  Surprisingly hard to find.
-  It must be hiding in plain sight.
+  \begin{center}
+    \begin{tikzpicture}
+      \node (0) {$A$};
+      \node[right of=0,xshift=1cm] (1) {$B$};
+      \node[right of=1,xshift=1cm] (2) {$C$};
+      \draw (1) -- node[above] {$g$} (2);
+      \draw[transform canvas={yshift=0.1cm},->] (0) -- node[above] {$f_1$} (1); 
+      \draw[transform canvas={yshift=-0.1cm},->] (0) -- node[below] {$f_2$} (1); 
+    \end{tikzpicture}
+  \end{center}
+  
+  This category is clearly small and finite; the hom-set of each pair of objects is a set and there are a finite number of objects.
+  We require that $C$ is a terminal object by separating $f_1 \ne f_2$ and identifying $g \circ f_1 = g \circ f_2$ (i.e., $g$ is not a monomorphism).
+  The product of any two objects is their lower bound, just like in a poset.
+  \[\begin{array}{r c l}
+     A \times B &=& A
+  \\ A \times C &=& A
+  \\ B \times C &=& B
+  \end{array}\]
+  Now for the exponentials.
+  We show that the object $B^A$ does not exist.
 
+  By contradiction, first assume that $B^A = A$, hence there exists an arrow $i: A \times B^A \rightarrow B$.
+  Then for all objects $X$ such that $A \times X$ has an arrow $j$ to $B$, there must exist a unique arrow $\langle \id_A, j^*\rangle$ such that $j = i \circ \langle \id_A, j^*\rangle$.
+  One choice of $X$ is $C$, because $j = f_1 \circ \pi_1 : A \times C \rightarrow B$, however there is no corresponding arrow $j^*: C \rightarrow A$.
+  So $B^A$ cannot be $A$.
+  A similar argument shows that $B^A$ cannot be $B$: there is no arrow $j^*$ from $X=C$ to $B$.
+
+  We are left with $B^A = C$.
+  There are two choices for $i: A \times C \rightarrow B$.
+  We can use $f_1 \circ \pi_1$ or $f_2 \circ \pi_1$.
+  But no matter which we choose, the other will be an arrow from $A \times X \rightarrow B$ that we cannot build a commutative diagram for because $f_1 \ne f_2$.
+  These counterexamples, shown below, demonstrate that $B^A \ne C$, which completes the proof of non-existence.
+  \begin{center}
+    \hfill
+    \begin{tikzpicture}
+      \node (1) {$A \times C$};
+      \node[below of=1, yshift=-1cm] (2) {$A \times X$};
+      \node[right of=1,xshift=2cm] (3) {$B$};
+      
+      \draw[->] (1) -- node[above] {$f_1 \circ \pi_1$} (3);
+      \draw[->] (2) -- node[below right] {$f_2 \circ \pi_1$} (3);
+      \draw[->,dashed] (2) -- node[left] {$\langle \id_A, ?\rangle$} (1);
+    \end{tikzpicture}
+    \hfill
+    \begin{tikzpicture}
+      \node (1) {$A \times C$};
+      \node[below of=1, yshift=-1cm] (2) {$A \times X$};
+      \node[right of=1,xshift=2cm] (3) {$B$};
+      
+      \draw[->] (1) -- node[above] {$f_2 \circ \pi_1$} (3);
+      \draw[->] (2) -- node[below right] {$f_1 \circ \pi_1$} (3);
+      \draw[->,dashed] (2) -- node[left] {$\langle \id_A, ?\rangle$} (1);
+    \end{tikzpicture}
+    \hfill
+  \end{center}
+  
+
+\newpage
 \item [1.10.5.2]
   Exponentation in $\csetset$ is componentwise.
   That is, every pair of $\csetset$ objects determines an exponential.
