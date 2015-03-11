@@ -1,0 +1,36 @@
+\documentclass{article}
+
+\input{../package.tex}
+
+\newcommand{\cpo}{\mathbf{CPO}}
+\newcommand{\id}{\emph{id}}
+
+\begin{document}
+\begin{enumerate}
+\item[3.4.7]
+  The ``category'' $\cpo$ has $\omega$-complete partial orders as objects and $\omega$-continuous functions as arrows.
+  We prove $\cpo$ is a category by showing the identity and associative laws hold.
+  \begin{itemize}
+  \item[\emph{assoc}]
+    We show that for any two arrows $f : A \rightarrow B$ and $g : B \rightarrow C$ in $\cpo$, their composition $g \circ f$ is also in $\cpo$.
+    First, $f$'s monotonicity implies that for all $p_1 \sqsubseteq_A p_2$, we have $f(p_1) \sqsubseteq_B f(p_2)$.
+    Now using $g$'s monotonicity, we have that $g(f(p_1)) \sqsubseteq_C g(f(p_2))$, or rather, $(g circ f)(p_1) \sqsubseteq (g \circ f)(p_2)$.
+    This shows that $g \circ f$ is monotone.
+    
+    To see that $g \circ f$ is continuous, we observe:
+    \begin{align*}
+      (g \circ f) \sqcup p_n &= g(f(\sqcup p_n))
+    \\\langle\emph{f continuous}\rangle    &= g(\sqcup f(p_n))
+    \\\langle\emph{g continuous}\rangle    &= \sqcup g(f(p_n))
+    \\                       &= \sqcup (g \circ f)(p_n)
+    \end{align*}
+
+  \item[\emph{identity}]
+    For any partial order $P \in \cpo$, define the function $\id_P : P \rightarrow P$ as $\id_P(p) = p$ for all elements $p$ of the chain $P$.
+    Clearly $p_1 \sqsubseteq p_2$ implies $\id_P(p_1) \sqsubseteq \id_P(p_2)$.
+    Also $\id_P \sqcup p_n = \sqcup p_n = \sqcup id_P(p_n)$, so $\id_P$ is continuous and therefore in $\cpo$.
+
+    It follows by definition that $\id_P$ is a unit for composition.
+  \end{itemize}
+\end{enumerate}
+\end{document}
