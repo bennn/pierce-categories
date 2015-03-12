@@ -4,6 +4,7 @@
 
 \newcommand{\cpo}{\mathbf{CPO}}
 \newcommand{\id}{\emph{id}}
+\newcommand{\cat}[1]{\mathbf{#1}}
 
 \begin{document}
 \begin{enumerate}
@@ -34,6 +35,35 @@
   \end{itemize}
 
 \item[3.4.9]
+  Suppose the hom-sets of $\cpo$ are ordered pointwise, such that $f \sqsubseteq f' \iff \forall a \in A.~f(a) \sqsubseteq f'(a)$.
+  We have that:
+  \begin{itemize}
+  \item
+    For every pair of $\cpo$ objects $A$ and $B$, their hom-sets are equipped with a partial ordering.
+    This partial ordering is $\omega$-complete because $\sqsubseteq_A$ and $\sqsubseteq_B$ are $\omega$-complete partial orderings.
+  \item
+    Assuming $f \sqsubseteq f'$ and $g \sqsubseteq g'$, we can derive $g \circ f \sqsubseteq g' \circ f'$ by proving $(g \circ f)(a) \sqsubseteq (g' \circ f')(a)$ for all $a$ in the domain of $f$.
+    We show this by unfolding the compositions to get $g(f(a)) \sqsubseteq g'(f'(a))$.
+    Then since $f(a)$ and $f'(a)$ are in the domain of $g$ the assumption $g \sqsubseteq g'$ finishes the proof.
+  \item
+    We can derive $\sqcup(g_n \circ f_n) = \sqcup g_n \circ \sqcup f_n$ for $\omega$-sequences of functions $\{f_i\}$ and $\{g_i\}$ by chain continuity.
+
+    First, $\sqcup g_n \circ \sqcup f_n \sqsubseteq \sqcup(g_n \circ f_n)$ holds if and only if for all $a$ in the domain of $\sqcup f_n$, we can prove $(\sqcup g_n \circ \sqcup f_n)(a) \sqsubseteq (\sqcup (g_n \circ f_n))(a)$.
+    By chain continuity, we can expand left hand side:
+    \begin{align*}
+      (\sqcup g_n \circ \sqcup f_n)(a) &= (\sqcup g_n) ((\sqcup f_n) a)
+    \\ &= g_n \sqcup (f_n (\sqcup a))
+    \\ &= g_n (f_n (\sqcup \sqcup a))
+    \\ &= g_n (f_n (\sqcup a))
+    \\ &= g_n \circ f_n \sqcup a
+    \\ &= \sqcup (g_n \circ f_n) a
+    \end{align*}
+
+    Second, $\sqcup g_n \circ \sqcup f_n \sqsubseteq \sqcup(g_n \circ f_n)$ because $\sqcup(g_n \circ f_n)$ is an upper bound of any composition of functions in $\{g_i\}$ and $\{f_i\}$.
+    In particular, $\sqcup g_n \in \{g_i\}$ and $\sqcup f_n \in \{f_i\}$ are two such functions, so their composition is bounded above by $\sqcup(g_n \circ f_n)$.
+  \end{itemize}
+  Therefore $\cpo$ is an $\cat{O}$ category when the hom-sets are ordered pointwise.
+
 \item[3.4.11]
   If $f$ is an embedding, there must be an $f^R$ such that $f^R \circ f = \id_A$.
   This $f^R$ must be unique because $\id_A$ is unique.
