@@ -15,35 +15,80 @@
   Because $f$ is surjective, this derivation shows that $g$ and $h$ agree on all elements of their common domain, thus contradicting the assumption that $g \ne h$.
 
 \item [1.3.2]
-  To show that the composition of two monic arrows is monic, let $f : B \rightarrow C$ and $g : C \rightarrow D$ be monic arrows.
-  First, let $a : A \rightarrow B$ and $b : A \rightarrow B$ be two equal arrows.
-  We derive $(g \circ f) \circ a = (g \circ f) \circ b$ by assuming there is some element $x \in A$ for which the equality does not hold.
+  \emph{Goal [1/2]:} $\forall f, g .\,f \mbox{ monic} \wedge g \mbox{ monic} \Rightarrow g \circ f \mbox{ monic}$
+  \begin{itemize}
+  \item
+    Suffices to show: $\forall a, b .\,(g \circ f) \circ a = (g \circ f) \circ b \Rightarrow a = b$
+    \\ (by definition $g \circ f$ monic)
+  \item
+    Assume $(g \circ f) \circ a = (g \circ f) \circ b$
+  \item
+    $g \circ (f \circ a) = g \circ (f \circ b)$
+    \\ (by associativity)
+  \item
+    $f \circ a = f \circ b$
+    \\ (by $g$ monic)
+  \item
+    Conclude $a = b$
+    \\ (by $f$ monic) \qed
+  \end{itemize}
 
-  By the equality of $a$ and $b$, we know that $(g\circ f)(a(x)) \ne (g\circ f)(b(x)) \Rightarrow (g\circ f)(y) \ne (g\circ f)(y)$ for a $y = a(x) = b(x)$.
-  This implies $g(f(y)) \ne g(f(y))$, a contradiction.
+\item[]
+  \emph{Goal [2/2]:} $\forall f,g .\,g \circ f \mbox{ monic} \Rightarrow f \mbox{ monic}$
+  \begin{itemize}
+  \item
+    Suffices to show: $\forall a, b .\,f \circ a = f \circ b \Rightarrow a = b$
+  \item
+    Assume $f \circ a = f \circ b$
+  \item
+    $g \circ (f \circ a) = g \circ (f \circ b)$
+    \\ (because $g$ is an arrow)
+  \item
+    $(g \circ f) \circ a = (g \circ f) \circ b$
+    \\ (by associativity)
+  \item
+    Conclude $a = b$
+      \\ (by $g \circ f$ monic) \qed
+  \end{itemize}
 
-  Next, assume that $(g\circ f) \circ a = (g\circ f) \circ b$ but that $a \ne b$.
-  Then we have some element $x \in A$ such that $a(x) = y_1 \ne y_2 = b(x)$.
-  This implies that $g(f(y_1)) = g(f(y_2))$.
-  However, $g$ is a monomorphism and $f$ is equal to itself, so we arrive at a contradiction.
-
-  For the second part, let $f : B \rightarrow C$ and $g : C \rightarrow D$ be functions such that $(g \circ f) : B \rightarrow D$ is monic.
-  Then for functions $a,b : A \rightarrow B$, $(g \circ f) \circ a = (g \circ f) \circ b$ implies $a = b$.
-  We see that $f$ must be monic because the domain of $f$ is equal to the domain of $(g \circ f)$ and the codomains of $a$ and $b$.
-  If $f$ were not monic then our assumption could not hold.
 
 \item[]
 \item[1.3.3]
-  Let $f$ and $g$ be epic functions.
-  We see that their composition $g \circ f$ must also be epic by associativity of $\circ$.
-  The equality $a \circ (g \circ f) = b \circ (g \circ f)$ may be parenthesized as $(a \circ g) \circ f = (b \circ g) \circ f$.
-  Because $f$ is epic, equality proves that $a \circ g = b \circ g$.
-  Because $g$ is epic, equality here proves that $a = b$.
-  Thus we have that $a \circ (g \circ f) = b \circ (g \circ f)$ implies $a = b$.
+  \emph{Goal [1/2]:} $\forall f, g .\,f \mbox{ epic} \wedge g \mbox{ epic} \Rightarrow g \circ f \mbox{ epic}$
+  \begin{itemize}
+  \item
+    Suffices to show: $\forall a, b .\,a \circ (g \circ f) = b \circ (g \circ f) \Rightarrow a = b$
+    \\ (by definition $g \circ f$ epic)
+  \item
+    Assume $a \circ (g \circ f) = b \circ (g \circ f)$
+  \item
+    $(a \circ g) \circ f = (b \circ g) \circ f$
+    \\ (by associativity)
+  \item
+    $a \circ g = b \circ g$
+    \\ (by $f$ epic)
+  \item
+    Conclude $a = b$
+    \\ (by $g$ epic) \qed
+  \end{itemize}
 
-  Proving that if $(g \circ f)$ is epic then $g$ is epic follows a similar argument as used in the second part of 1.3.2.
-  Namely, the codomain of $g$ is the same as the codomain of $(g \circ f)$.
-  This observation leads to a similar contradiction as before; if $g$ were not epic then the statement $a \circ (g \circ f) = b \circ (g \circ f)$ implies $a = b$ would be false.
+\item[]
+  \emph{Goal [2/2]:} $\forall f,g .\,g \circ f \mbox{ epic} \Rightarrow g \mbox{ epic}$
+  \begin{itemize}
+  \item
+    Suffices to show: $\forall a, b .\,a \circ g = b \circ g \Rightarrow a = b$
+  \item
+    Assume $a \circ g = b \circ g$
+  \item
+    $(a \circ g) \circ f = (b \circ g) \circ f$
+    \\ (because $f = f$)
+  \item
+    $a \circ (g \circ f) = b \circ (g \circ f)$
+    \\ (by associativity)
+  \item
+    Conclude $a = b$
+      \\ (by $g \circ f$ epic) \qed
+  \end{itemize}
 
 \item[]
 \item[1.3.4]
