@@ -32,7 +32,7 @@
         \node (1) {$*$};
         \node [right of=1, xshift=1cm] (2) {$T(F(*))$};
         \node [below of=2, yshift=-1cm] (3) {$T(y)$};
-        
+
         \draw[->] (1) -- node [above] {$\iota$} (2);
         \draw[->] (1) -- node[below left] {$f$} (3);
         \draw[->] (2) -- node [right] {$T~f^{\#}$} (3);
@@ -87,7 +87,7 @@
       \node (1) {$(\langle A , B \rangle , \langle A , B \rangle)$};
       \node [below of=1,yshift=-1cm] (2) {$(C, C)$};
       \node [right of=1,xshift=3cm] (3) {$(A, B)$};
-      
+
       \draw[->] (2) -- node[left] {$(\langle g_1 , g_2 \rangle , \langle g_1 , g_2 \rangle)$} (1);
       \draw[->] (2) -- node[below right] {$(g_1, g_2)$} (3);
       \draw[->] (1) -- node[above] {$\epsilon$} (3);
@@ -129,10 +129,10 @@
 \newpage
 \item[2.4.12.1] %% dualize the initial objects to get terminal objects
   Exercise \textbf{2.4.5} showed how an initial object in a category $\ccat$ arises as the image of the unique object $*$ of the category $\one$ under a left adjoint to the constant functor $T : \ccat \rightarrow \one$.
-  
+
   Dually, a final object 1 in a category $\ccat$ arises as the \emph{preimage} of the unique object $*$ of the category $\one$ under a \emph{right} adjoint to the constant functor $T$.
   The unit picks out the unique $\ccat$-arrow from any $\ccat$-object to the final object, 1, and the counit is fixed as $I_\one \rightarrow I_\one$.
-  
+
   The unit and counit diagrams are below.
   The functor $G : \one \rightarrow \ccat$ maps the object $*$ to the final object $1$ in $\ccat$.
   \begin{center}
@@ -140,7 +140,7 @@
         \node (1) {$*$};
         \node [right of=1, xshift=1cm] (2) {$G(T(*))$};
         \node [below of=2, yshift=-1cm] (3) {$G(y)$};
-        
+
         \draw[->] (1) -- node [above] {$\eta$} (2);
         \draw[->] (1) -- node[below left] {$f$} (3);
         \draw[->] (2) -- node [right] {$G~f^{\#}$} (3);
@@ -159,7 +159,7 @@
   The existence and uniqueness of the arrow $f^{\#}$ follows because $1$ is a final object in $\ccat$.
   Hence there exists a unique arrow for each $C \in \ccat$ mapping $C$ to $1$.
 
-\subitem  
+\subitem
   The existence and uniqueness of the arrow $g^*$ follows by the existence and uniqueness of the identity arrow $\id_*$ in the category $\one$.
 
 \vfill{}
@@ -171,7 +171,7 @@
         \node (1) {$C$};
         \node [right of=1, xshift=2cm] (2) {$C \times C$};
         \node [below of=2, yshift=-1cm] (3) {$A \times B$};
-        
+
         \draw[->] (1) -- node [above] {$\langle \id_C , \id_C \rangle$} (2);
         \draw[->] (1) -- node[below left] {$\langle f, g \rangle$} (3);
         \draw[->] (2) -- node [right] {$f \times g$} (3);
@@ -205,16 +205,18 @@
 
 \subitem
   The unit of this adjunction is the class of arrows that take a fixed $\ccat$-object $C$ to the pair of a $\ccat$-object $A$ and $\ccat$-arrows from $A$ to $C$.
-  The mapping from $f$ to $f^{\#}$ is the process of uncurrying a function $f : C \rightarrow A \rightarrow B$ into a function $f^{\#} : C \times A \rightarrow B$.
+
+  Example \textbf{2.4.8} also showed, that there is a bijection between $\ccat(C, B^A)$ and $\ccat(C \times A, B)$.
+  Thus, there must be an inverse function $uncurry$ to $curry$, such that if $f$ is an arrow $C \rightarrow B^A$, then $f^\# = uncurry(f)$ is an arrow $C \times A \rightarrow B$.
   \begin{center}
       \begin{tikzpicture}
         \node (1) {$C$};
-        \node [right of=1, xshift=2cm] (2) {$C^A \times A$};
-        \node [below of=2, yshift=-1cm] (3) {$B^A \times A$};
-        
-        \draw[->] (1) -- node [above] {$\eta$} (2);
+        \node [right of=1, xshift=3cm] (2) {$(C \times A)^A$};
+        \node [below of=2, yshift=-1cm] (3) {$B^A$};
+
+        \draw[->] (1) -- node [above] {$curry(id_{C \times A})$} (2);
         \draw[->] (1) -- node[below left] {$f$} (3);
-        \draw[->] (2) -- node [right] {$(f^{\#})^A \times A$} (3);
+        \draw[->] (2) -- node [right] {$uncurry(f)^A$} (3);
       \end{tikzpicture}
   \end{center}
 
@@ -227,7 +229,7 @@
       \node (1) {$N$};
       \node [right of=1, xshift=2cm] (2) {$\floor{U(N)}$};
       \node [below of=2, yshift=-1cm] (3) {$\floor{M}$};
-      
+
       \draw[->] (1) -- node [above] {$\eta$} (2);
       \draw[->] (1) -- node[below left] {$f$} (3);
       \draw[->] (2) -- node [right] {$\floor{f^{\#}}$} (3);
@@ -259,7 +261,7 @@
         \node (1) {$X$};
         \node [right of=1, xshift=2cm] (2) {$G(F(X))$};
         \node [below of=2, yshift=-1cm] (3) {$G(Y)$};
-        
+
         \draw[->] (1) -- node [above] {$\eta$} (2);
         \draw[->] (1) -- node[below left] {$f$} (3);
         \draw[->] (2) -- node [right] {$G(f^{\#})$} (3);
@@ -274,7 +276,7 @@
         \node (1) {$G(Y)$};
         \node [right of=1, xshift=2cm] (2) {$G(F(G(Y)))$};
         \node [below of=2, yshift=-1cm] (3) {$G(Y)$};
-        
+
         \draw[->] (1) -- node [above] {$\eta$} (2);
         \draw[->] (1) -- node[below left] {$f$} (3);
         \draw[->] (2) -- node [right] {$G(f^{\#})$} (3);
